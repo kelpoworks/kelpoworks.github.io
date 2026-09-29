@@ -5,149 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kelpo Tools · small, friendly tools for Unity</title>
 <meta name="description" content="Kelpo makes small, fast, friendly tools for Unity. Good enough to ship.">
+<link rel="canonical" href="https://kelpoworks.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kelpo Tools">
+<meta property="og:title" content="Kelpo Tools · small, friendly tools for Unity">
+<meta property="og:description" content="Kelpo makes small, fast, friendly tools for Unity. Good enough to ship.">
+<meta property="og:url" content="https://kelpoworks.github.io/">
+<meta property="og:image" content="https://kelpoworks.github.io/img/og-kelpo.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f6f1e1">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --paper:#f0f3ea;
-    --ink:#20241e;
-    --sage:#5e7d63;
-    --sage-soft:#a9bfa9;
-    --rule:#cfd8c4;
-    --card:#f7f9f2;
-  }
-  *{ margin:0; padding:0; box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:"Nunito Sans", system-ui, sans-serif;
-    font-size:17px;
-    line-height:1.65;
-    /* faint paper grain */
-    background-image:radial-gradient(rgba(32,36,30,0.028) 1px, transparent 1px);
-    background-size:5px 5px;
-  }
-  .wrap{ max-width:820px; margin:0 auto; padding:0 24px; }
-
-  /* ---------- hero ---------- */
-  header{ padding:56px 0 8px; text-align:center; }
-  header img{
-    width:100%; max-width:760px; height:auto; display:block; margin:0 auto;
-  }
-  .tagline{
-    font-family:"Gochi Hand", cursive;
-    font-size:1.7rem;
-    color:var(--ink);
-    margin-top:4px;
-  }
-  .tagline .squig{ display:block; margin:10px auto 0; }
-
-  /* ---------- sections ---------- */
-  section{ padding:44px 0 8px; }
-  h2{
-    font-family:"Gochi Hand", cursive;
-    font-weight:400;
-    font-size:2rem;
-    letter-spacing:0.06em;
-    margin-bottom:20px;
-    display:flex; align-items:center; gap:14px;
-  }
-  h2 svg{ flex:none; }
-  p.lead{ max-width:620px; }
-
-  /* ---------- product cards ---------- */
-  .cards{ display:grid; grid-template-columns:1fr 1fr; gap:26px; margin-top:26px; }
-  .card{
-    --accent:var(--sage);
-    background:var(--card);
-    border:2px solid var(--ink);
-    border-radius:14px 16px 15px 13px / 15px 13px 16px 14px; /* wobbly */
-    padding:26px 28px 24px;
-    position:relative;
-    box-shadow:3px 4px 0 color-mix(in srgb, var(--accent) 30%, transparent);
-    transform:rotate(-0.35deg);
-  }
-  .card:nth-child(2){ transform:rotate(0.4deg); }
-  .card--3d{ --accent:#56718a; background:#eef2f4; }
-  .card--audio{ --accent:#b3773f; background:#f8f3ea; }
-  .card--mystery{ grid-column:1 / -1; }
-  .card h3{
-    font-family:"Gochi Hand", cursive;
-    font-weight:400;
-    font-size:1.55rem;
-    margin-bottom:2px;
-  }
-  .card .pillars{
-    font-weight:700;
-    font-size:0.86rem;
-    letter-spacing:0.09em;
-    text-transform:uppercase;
-    color:var(--accent);
-    margin-bottom:12px;
-  }
-  .card p{ max-width:560px; }
-  .badge{
-    position:absolute; top:-13px; right:18px;
-    font-family:"Gochi Hand", cursive;
-    font-size:0.95rem;
-    background:var(--paper);
-    border:2px dashed var(--accent);
-    border-radius:999px;
-    color:var(--accent);
-    padding:2px 14px;
-    transform:rotate(2deg);
-  }
-  .card .doodle{ position:absolute; bottom:14px; right:18px; opacity:0.85; }
-  .card .doodle path{ stroke:var(--accent); }
-
-  /* ---------- philosophy ---------- */
-  .kelpo-note{
-    margin-top:26px;
-    border-left:3px solid var(--sage-soft);
-    padding:6px 0 6px 20px;
-    font-style:italic;
-    max-width:600px;
-  }
-  .kelpo-note b{ font-style:normal; }
-
-  /* ---------- contact / footer ---------- */
-  .contact a{
-    color:var(--ink);
-    font-weight:700;
-    text-decoration:none;
-    border-bottom:2px solid var(--sage);
-  }
-  .contact a:hover, .contact a:focus-visible{ color:var(--sage); }
-  a:focus-visible{ outline:3px solid var(--sage); outline-offset:3px; border-radius:3px; }
-  footer{
-    margin-top:70px;
-    padding:26px 0 40px;
-    border-top:2px dashed var(--rule);
-    text-align:center;
-    font-size:0.9rem;
-    color:#5a6153;
-  }
-  footer .mini{ font-family:"Gochi Hand", cursive; font-size:1.05rem; color:var(--sage); margin-top:6px; }
-
-  @media (max-width:560px){
-    body{ font-size:16px; }
-    .tagline{ font-size:1.4rem; }
-    h2{ font-size:1.7rem; }
-    .cards{ grid-template-columns:1fr; }
-    .card{ padding:22px 20px 20px; }
-  }
-  @media (prefers-reduced-motion: no-preference){
-    .card{ transition:transform .18s ease; }
-    .card:hover{ transform:rotate(0deg) translateY(-2px); }
-  }
-</style>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/site.js" defer></script>
 </head>
 <body>
 
-<header class="wrap">
-  <img src="bannerCRelativeSmallGD4.png" alt="Kelpo Tools — Kelpo mascot is smiling and has the selfconfidence of a much bigger person" >
+<header class="site-head wrap">
+  <h1><img src="img/kelpo-tools.png" width="2000" height="800" alt="Kelpo Tools. The mascot is smiling and has the self-confidence of a much bigger person."></h1>
   <p class="tagline">Small, friendly tools for Unity.
     <svg class="squig" width="180" height="12" viewBox="0 0 180 12" fill="none" aria-hidden="true">
       <path d="M2 8 C 20 2, 34 11, 52 6 S 86 2, 104 7 S 140 11, 178 4" stroke="#5e7d63" stroke-width="2.5" stroke-linecap="round"/>
@@ -165,17 +43,26 @@
       the tools
     </h2>
 
-    <p class="lead">Every Kelpo tool started as something I needed for my own games. I built them small and fast, without extra fluff. Now I'm cleaning them up and putting them on the Unity Asset Store, at prices a hobby budget can handle.</p>
+    <p class="lead">Every Kelpo tool started as something I needed for my own games. I built them small and fast, without extra fluff. Now I'm cleaning them up and putting them on the Unity Asset Store, at prices a hobby budget can handle. The first one is out.</p>
 
     <div class="cards">
-      <article class="card card--3d">
-        <span class="badge">in the workshop</span>
-        <h3>Kelpo 3D Multitool</h3>
-        <p class="pillars">Model · Sculpt · Paint · UV · Colliders</p>
-        <p>I got tired of opening a full 3D program every time a game needed one small prop. With this you block out a shape, sculpt it, unwrap it, paint color, metal and smoothness right on the surface, and add colliders. All inside Unity. The tools are basic on purpose. They cover what you need most of the time, and they are quick.</p>
-        <svg class="doodle" width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
-          <path d="M15 3 L27 9 v12 L15 27 L3 21 V9 Z M15 3 v12 M3 9 l12 6 12-6" stroke-width="2" stroke-linejoin="round"/>
-        </svg>
+      <article class="card card--3d card--feature">
+        <span class="badge badge--live">out now</span>
+        <a class="photo" href="multitool/" tabindex="-1" aria-hidden="true">
+          <img src="img/multitool-card.png" width="420" height="280" alt="">
+        </a>
+        <div>
+          <h3><a href="multitool/">Kelpo 3D Multitool</a></h3>
+          <p class="pillars">Model · Sculpt · UV · Paint · Colliders · Export</p>
+          <p>I got tired of opening a full 3D program every time a game needed one small prop. With this you block out a shape, sculpt it, unwrap it, paint it right on the surface, add colliders and export the result as a prefab. All inside Unity. The tools are basic on purpose. They cover what you need most of the time, and they are quick.</p>
+          <div class="actions">
+            <a class="btn btn--main" href="https://assetstore.unity.com/packages/tools/modeling/kelpo-3d-multitool-398918">Asset Store
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 12.5 L12 4 M6 3.5 h6.5 v6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="btn" href="multitool/">Take a look</a>
+            <p class="sale" data-until="2026-10-05T18:00:00Z" hidden>launch sale 30% off · <span data-left></span></p>
+          </div>
+        </div>
       </article>
 
       <article class="card card--audio">
@@ -188,7 +75,7 @@
         </svg>
       </article>
 
-      <article class="card card--mystery">
+      <article class="card">
         <span class="badge">coming later</span>
         <h3>Project Mörkö</h3>
         <p class="pillars">? · ? · ?</p>
@@ -202,7 +89,7 @@
     <p class="kelpo-note"><b>kelpo</b> <i>(Finnish)</i> means decent, worthy, does the job. That is the whole idea here: tools I built for my own use, kept small and easy to learn, sold cheap. Good enough to ship.</p>
   </section>
 
-  <section id="contact" class="contact">
+  <section id="contact">
     <h2>
       <svg width="30" height="24" viewBox="0 0 30 24" fill="none" aria-hidden="true">
         <path d="M3 5 h24 v15 H3 Z M3 6 l12 9 12-9" stroke="#5e7d63" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
@@ -210,11 +97,17 @@
       say hello
     </h2>
     <p class="lead">Questions, support, or you made something and want to show it? Write to <a href="mailto:kelpo.works@gmail.com">kelpo.works@gmail.com</a>. I read every message.</p>
+    <p class="lead">Videos and tutorials go up on YouTube at <a href="https://www.youtube.com/@KelpoTools">@KelpoTools</a>.</p>
   </section>
 
 </main>
 
 <footer class="wrap">
+  <nav aria-label="Elsewhere">
+    <a href="multitool/">3D Multitool</a>
+    <a href="https://www.youtube.com/@KelpoTools">YouTube</a>
+    <a href="https://assetstore.unity.com/publishers/153966">Asset Store</a>
+  </nav>
   <p>© 2026 Kelpo · made in Finland</p>
   <p class="mini">good enough to ship</p>
 </footer>

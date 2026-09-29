@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kelpo 3D Multitool · model, sculpt and paint in Unity</title>
+<meta name="description" content="Model, sculpt, remesh, unwrap, paint, add colliders and export 3D props without leaving the Unity editor. A small, focused toolkit by Kelpo.">
+<link rel="canonical" href="https://kelpoworks.github.io/multitool/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kelpo Tools">
+<meta property="og:title" content="Kelpo 3D Multitool · model, sculpt and paint in Unity">
+<meta property="og:description" content="Model, sculpt, remesh, unwrap, paint, add colliders and export 3D props without leaving the Unity editor.">
+<meta property="og:url" content="https://kelpoworks.github.io/multitool/">
+<meta property="og:image" content="https://kelpoworks.github.io/img/og-multitool.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f6f1e1">
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/site.js" defer></script>
+</head>
+<body>
+
+<nav class="topbar wrap" aria-label="Site">
+  <a href="../"><img src="../img/kelpo-head.png" width="36" height="36" alt=""> Kelpo Tools</a>
+  <a href="https://assetstore.unity.com/packages/tools/modeling/kelpo-3d-multitool-398918">Asset Store
+    <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 12.5 L12 4 M6 3.5 h6.5 v6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</nav>
+
+<header class="hero wrap">
+  <h1><img src="../img/multitool-cover.webp" width="1950" height="1300" alt="Kelpo 3D Multitool"></h1>
+  <p class="tagline">Make the prop. Stay in Unity.
+    <svg class="squig" width="180" height="12" viewBox="0 0 180 12" fill="none" aria-hidden="true">
+      <path d="M2 8 C 20 2, 34 11, 52 6 S 86 2, 104 7 S 140 11, 178 4" stroke="#5e7d63" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </p>
+  <p class="intro">A small set of 3D tools inside the Unity editor. Block out a mesh, sculpt it, clean it up, unwrap it, paint it and give it colliders. Then export the finished prefab and get back to your game.</p>
+  <div class="actions">
+    <a class="btn btn--main" href="https://assetstore.unity.com/packages/tools/modeling/kelpo-3d-multitool-398918">Get it on the Asset Store
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 12.5 L12 4 M6 3.5 h6.5 v6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a class="btn" href="#watch">Watch it work</a>
+  </div>
+  <p class="sale" data-until="2026-10-05T18:00:00Z" hidden>launch sale 30% off · <span data-left></span></p>
+  <p class="facts">Unity 2022.3 LTS or newer · Built-in, URP and HDRP · Windows</p>
+</header>
+
+<main class="wrap">
+
+  <section id="watch">
+    <h2>
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+        <path d="M4 7 C10 6.4 20 6.4 26 7 C26.6 12 26.6 18 26 23 C20 23.6 10 23.6 4 23 C3.4 18 3.4 12 4 7 Z M12.5 11 L19.5 15 L12.5 19 Z" stroke="#5e7d63" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      watch it work
+    </h2>
+
+    <figure class="video">
+      <a class="video-link" href="https://www.youtube.com/watch?v=n4jIoGQUSMU" data-yt="n4jIoGQUSMU" title="Modeling &amp; Painting a Wooden Shield Without Leaving Unity">
+        <img src="https://i.ytimg.com/vi/n4jIoGQUSMU/maxresdefault.jpg" width="1280" height="720" alt="" loading="lazy">
+        <svg class="play" viewBox="0 0 88 88" aria-hidden="true">
+          <path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/>
+          <path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/>
+        </svg>
+        <span class="sr-only">Play video: Modeling and painting a wooden shield without leaving Unity</span>
+      </a>
+      <figcaption><b>The wooden shield.</b> Modeled and painted without leaving Unity.</figcaption>
+    </figure>
+
+    <div class="video-row">
+      <figure class="video">
+        <a class="video-link" href="https://www.youtube.com/watch?v=YbY8u-JHCso" data-yt="YbY8u-JHCso" title="3D Model, sculpt and paint in Unity">
+          <img src="https://i.ytimg.com/vi/YbY8u-JHCso/maxresdefault.jpg" width="1280" height="720" alt="" loading="lazy">
+          <svg class="play" viewBox="0 0 88 88" aria-hidden="true">
+            <path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/>
+            <path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/>
+          </svg>
+          <span class="sr-only">Play video: 3D model, sculpt and paint in Unity</span>
+        </a>
+      </figure>
+      <div>
+        <h3>The first demo</h3>
+        <p>Model, sculpt and paint in Unity. The tool has grown a lot since this one, but the idea is the same.</p>
+      </div>
+    </div>
+
+    <p class="more">More videos on YouTube at <a href="https://www.youtube.com/@KelpoTools">@KelpoTools</a>.</p>
+  </section>
+
+  <section id="features">
+    <h2>
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+        <path d="M4 12 h22 v12 H4 Z M11 12 V8.5 c0-1 .8-1.5 1.5-1.5 h5 c.7 0 1.5 .5 1.5 1.5 V12 M4 17 h22 M13 17 v2.5 h4 V17" stroke="#5e7d63" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      what it does
+    </h2>
+
+    <ul class="features">
+      <li>
+        <h3>
+          <svg width="26" height="26" viewBox="0 0 30 30" fill="none" aria-hidden="true"><path d="M15 3 L27 9 v12 L15 27 L3 21 V9 Z M3 9 l12 6 12-6 M15 15 v12" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          Model
+        </h3>
+        <p>Edit vertices, edges and faces. Extrude, inset, loop cut, weld and mirror as you go. Start from a cube, plane, sphere or cylinder.</p>
+      </li>
+      <li>
+        <h3>
+          <svg width="26" height="26" viewBox="0 0 30 30" fill="none" aria-hidden="true"><path d="M3 24 C8 24 10 23 11.5 19 C13 14.5 17 14.5 18.5 19 C20 23 22 24 27 24 M15 12 V4 M11.5 7.5 L15 4 L18.5 7.5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          Sculpt
+        </h3>
+        <p>A practical set of core brushes for shaping the mesh and adding detail by hand.</p>
+      </li>
+      <li>
+        <h3>
+          <svg width="26" height="26" viewBox="0 0 30 30" fill="none" aria-hidden="true"><path d="M15 4 L27 25 H3 Z M9 14.5 H21 M9 14.5 L15 25 L21 14.5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          Remesh
+        </h3>
+        <p>Simplify or remesh when a mesh gets heavy. Mask the details you want to keep and compare before you apply.</p>
+      </li>
+      <li>
+        <h3>
+          <svg width="26" height="26" viewBox="0 0 30 30" fill="none" aria-hidden="true"><path d="M12 3 h6 v6 h6 v6 h-6 v12 h-6 v-12 h-6 v-6 h6 Z M12 9 h6 M12 15 h6 M12 21 h6 M12 9 v6 M18 9 v6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          UV
+        </h3>
+        <p>Automatic unwrapping without overlaps, or box and triplanar projection. Check the layout and texel density before painting.</p>
+      </li>
+      <li>
+        <h3>
+          <svg width="26" height="26" viewBox="0 0 30 30" fill="none" aria-hidden="true"><path d="M26 4 L16 14 M16 14 C13 12 9 13 8.5 16.5 C8 20 6.5 22.5 4 24.5 C8.5 26 13.5 25 15.5 22 C17 19.8 17.3 16.8 16 14 Z" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          Paint
+        </h3>
+        <p>Paint color, metal, smoothness and height right on the surface, in layers. Start from scratch or paint over existing textures. Characters too, in their current pose.</p>
+      </li>
+      <li>
+        <h3>
+          <svg width="26" height="26" viewBox="0 0 30 30" fill="none" aria-hidden="true"><path d="M4 8 h14 v14 H4 Z" stroke-width="2" stroke-dasharray="3.5 3" stroke-linejoin="round"/><path d="M15 19 L26 8 M20 8 h6 v6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          Colliders &amp; export
+        </h3>
+        <p>Quick colliders and simplified mesh colliders. When it is done, export the mesh, textures, material and prefab.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="fit">
+    <h2>
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+        <path d="M7 4 h16 v22 H7 Z M10.5 10.5 l2 2 3.5-4 M10.5 18 l2 2 3.5-4 M18.5 11 h2 M18.5 18.5 h2" stroke="#5e7d63" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      good to know
+    </h2>
+    <p class="lead">The tools are basic on purpose. Here is what that means in practice.</p>
+
+    <div class="fit">
+      <div class="yes">
+        <h3>good for</h3>
+        <ul>
+          <li>Blockouts, prototypes and greyboxing</li>
+          <li>Props, modular pieces and level geometry</li>
+          <li>Fixing up and repainting meshes you already have</li>
+          <li>Painting characters in their current pose</li>
+          <li>Quick colliders and simple collision meshes</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>not for</h3>
+        <ul>
+          <li>Replacing Blender or other full 3D suites</li>
+          <li>Booleans or hand-made retopology</li>
+          <li>Detailed UV editing by hand</li>
+          <li>Reshaping skinned meshes (painting them works)</li>
+        </ul>
+      </div>
+    </div>
+
+    <aside class="note">
+      <h3>the small print</h3>
+      <ul>
+        <li>Unity 2022.3 LTS or newer</li>
+        <li>Built-in, URP and HDRP</li>
+        <li>Windows</li>
+        <li>Manual, demo scene and sample assets included</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section id="learn">
+    <h2>
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+        <path d="M3 8 C7 6.5 11 6.5 15 9 V25 C11 22.5 7 22.5 3 24 Z M27 8 C23 6.5 19 6.5 15 9 V25 C19 22.5 23 22.5 27 24 Z" stroke="#5e7d63" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      learn it
+    </h2>
+    <p class="lead">Proper tutorials are on the way, one part of the tool at a time. They will be listed here and posted on YouTube. Until then, the package comes with a manual, a demo scene and sample assets, and my inbox is open.</p>
+
+    <div class="notebook">
+      <p class="heading">coming up</p>
+      <ol class="lessons">
+        <li>Getting started <span class="soon">soon</span></li>
+        <li>Modeling <span class="soon">soon</span></li>
+        <li>Sculpting and remeshing <span class="soon">soon</span></li>
+        <li>UVs <span class="soon">soon</span></li>
+        <li>Painting <span class="soon">soon</span></li>
+        <li>Colliders and export <span class="soon">soon</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="get" class="get">
+    <a class="photo" href="https://assetstore.unity.com/packages/tools/modeling/kelpo-3d-multitool-398918" tabindex="-1" aria-hidden="true">
+      <img src="../img/multitool-card.png" width="420" height="280" alt="" loading="lazy">
+    </a>
+    <div>
+      <h2>
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+          <path d="M6 11 h18 l-1.5 15 h-15 Z M11 11 V9 a4 4 0 0 1 8 0 v2" stroke="#5e7d63" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        get it
+      </h2>
+      <p>Kelpo 3D Multitool is on the Unity Asset Store.</p>
+      <div class="actions">
+        <a class="btn btn--main" href="https://assetstore.unity.com/packages/tools/modeling/kelpo-3d-multitool-398918">Get it on the Asset Store
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 12.5 L12 4 M6 3.5 h6.5 v6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <p class="sale" data-until="2026-10-05T18:00:00Z" hidden>launch sale 30% off · <span data-left></span></p>
+      <p class="small">Questions before you buy, or stuck after? Write to <a href="mailto:kelpo.works@gmail.com">kelpo.works@gmail.com</a>. I read every message.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <nav aria-label="Elsewhere">
+    <a href="../">All tools</a>
+    <a href="https://www.youtube.com/@KelpoTools">YouTube</a>
+    <a href="https://assetstore.unity.com/publishers/153966">Asset Store</a>
+  </nav>
+  <p>© 2026 Kelpo · made in Finland</p>
+  <p class="mini">good enough to ship</p>
+</footer>
+
+</body>
+</html>
