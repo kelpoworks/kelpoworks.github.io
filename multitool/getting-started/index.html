@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting started: make a barrel · Kelpo 3D Multitool</title>
+<meta name="description" content="Make a wooden barrel from start to finish in Kelpo 3D Multitool: model it, unwrap it, paint wood and metal, add a collider and export a prefab. Every key press written down, a short clip for each step.">
+<link rel="canonical" href="https://kelpoworks.github.io/multitool/getting-started/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Kelpo Tools">
+<meta property="og:title" content="Getting started: make a barrel · Kelpo 3D Multitool">
+<meta property="og:description" content="Model, unwrap, paint, add a collider and export a wooden barrel without leaving Unity. Every key press written down, a short clip for each step.">
+<meta property="og:url" content="https://kelpoworks.github.io/multitool/getting-started/">
+<meta property="og:image" content="https://kelpoworks.github.io/multitool/getting-started/media/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f6f1e1">
+<link rel="icon" type="image/png" href="../../img/favicon.png">
+<link rel="apple-touch-icon" href="../../img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/guide.css">
+<script src="../../js/guide.js" defer></script>
+</head>
+<body>
+
+<nav class="topbar wrap" aria-label="Site">
+  <a href="../../"><img src="../../img/kelpo-head.png" width="36" height="36" alt=""> Kelpo Tools</a>
+  <a href="https://assetstore.unity.com/packages/tools/modeling/kelpo-3d-multitool-398918">Asset Store
+    <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 12.5 L12 4 M6 3.5 h6.5 v6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</nav>
+
+<header class="guide-head wrap">
+  <p class="crumbs"><a href="../">3D Multitool</a> › <a href="../#learn">guides</a> › getting started</p>
+  <h1>Getting started: make a barrel</h1>
+  <svg class="squig" width="180" height="12" viewBox="0 0 180 12" fill="none" aria-hidden="true">
+    <path d="M2 8 C 20 2, 34 11, 52 6 S 86 2, 104 7 S 140 11, 178 4" stroke="#5e7d63" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+  <div class="guide-intro">
+    <div>
+      <p class="lead">This is the whole trip, start to finish. We open the tool, model a barrel from a plain cylinder, unwrap it, paint wood and metal straight onto it, give it a collider and export a prefab you can drop into any scene. At the end there's a bonus: a burnt, beaten-up version made from the same barrel.</p>
+      <p class="lead">I wrote down every key I press. Keys look like <kbd>this</kbd> and buttons in the Kelpo window look like <span class="ui">this</span>. Each step has a short silent clip. It only loads when you press play.</p>
+      <ul class="chips">
+        <li>an hour or so</li>
+        <li>Model · UVs · Paint · Colliders · Export</li>
+        <li>Kelpo 3D Multitool 1.3</li>
+        <li>Unity 2022.3 LTS or newer</li>
+      </ul>
+    </div>
+    <figure>
+      <span class="photo"><img src="media/hero.jpg" width="940" height="840" alt="The finished barrel: orange-brown wooden planks with dark grooves, a sunken lid and two dark metal hoops."></span>
+      <figcaption>what we're making today</figcaption>
+    </figure>
+  </div>
+</header>
+
+<div class="guide">
+
+  <nav class="toc" aria-label="Chapters">
+    <details open>
+      <summary>chapters <span class="toc-now" data-toc-now></span></summary>
+      <ol>
+        <li class="toc-part">model</li>
+        <li><a href="#open">Open the window</a></li>
+        <li><a href="#basics">Vertices, edges, faces</a></li>
+        <li><a href="#cylinder">Start from a cylinder</a></li>
+        <li><a href="#rim">Rim and sunken lid</a></li>
+        <li><a href="#bulge">Bulge it</a></li>
+        <li><a href="#close-top">Close the top</a></li>
+        <li><a href="#shading">Crisp or soft shading</a></li>
+        <li><a href="#band">Cut a band for the hoop</a></li>
+        <li><a href="#hoop">Turn the band into a hoop</a></li>
+        <li><a href="#second-hoop">Second hoop and the bottom</a></li>
+        <li class="toc-part">UVs</li>
+        <li><a href="#unwrap">Unwrap it</a></li>
+        <li class="toc-part">paint</li>
+        <li><a href="#start-paint">Start painting</a></li>
+        <li><a href="#base-coat">Base color</a></li>
+        <li><a href="#layers">Layers</a></li>
+        <li><a href="#paint-area">Paint only the wood</a></li>
+        <li><a href="#presets">Save a brush</a></li>
+        <li><a href="#stamps">Plank stamps</a></li>
+        <li><a href="#height">Raise the planks</a></li>
+        <li><a href="#grooves">Dark grooves</a></li>
+        <li><a href="#metal">Metal hoops</a></li>
+        <li><a href="#dents">Dents in the metal</a></li>
+        <li><a href="#result">Look at it, then save</a></li>
+        <li class="toc-part">colliders &amp; export</li>
+        <li><a href="#collider">Add a collider</a></li>
+        <li><a href="#export">Export a prefab</a></li>
+        <li class="toc-part">bonus</li>
+        <li><a href="#convert">Make it editable again</a></li>
+        <li><a href="#sculpt">Rough it up</a></li>
+        <li><a href="#burnt">Paint it burnt</a></li>
+        <li><a href="#export-variant">Export the variant</a></li>
+        <li class="toc-part">reference</li>
+        <li><a href="#fixes">When it goes wrong</a></li>
+        <li><a href="#shortcuts">All the shortcuts</a></li>
+      </ol>
+    </details>
+  </nav>
+
+  <main class="guide-body">
+
+    <p class="part-head"><b>part 1</b> model</p>
+
+    <section class="step" id="open">
+      <div class="step-head"><span class="step-no">1</span><h2>Open the window and find your way around</h2></div>
+      <p class="why">The whole prop gets made in this one window, so it pays to know where things live.</p>
+      <ol class="do">
+        <li>In Unity's menu choose <span class="path">Tools<i>›</i>Kelpo<i>›</i>3D Multitool<i>›</i>Open 3D Multitool</span>, or press <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>K</kbd></span> (<span class="combo"><kbd>Cmd</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>K</kbd></span> on a Mac).</li>
+        <li>Dock the window next to the Scene view. You want to see both at once.</li>
+        <li>The tabs run down the right edge in the order you'll use them: <span class="ui">Model</span>, <span class="ui">Sculpt</span>, <span class="ui">Retopo</span>, <span class="ui">UVs</span>, <span class="ui">Paint</span>, <span class="ui">Colliders</span>, <span class="ui">Export</span>. A barrel needs Model, UVs, Paint, Colliders and Export.</li>
+      </ol>
+
+      <figure class="tour">
+        <a class="tour-shot" href="media/window.jpg">
+          <img src="media/window.jpg" width="686" height="890" loading="lazy" alt="The Kelpo 3D Multitool window on the Model tab, with numbered spots on its parts.">
+          <span class="spot" style="left:68.5%; top:12%" aria-hidden="true">1</span>
+          <span class="spot" style="left:64.1%; top:21.3%" aria-hidden="true">2</span>
+          <span class="spot" style="left:0.8%; top:33.7%" aria-hidden="true">3</span>
+          <span class="spot" style="left:0.8%; top:52.6%" aria-hidden="true">4</span>
+          <span class="spot" style="left:0.8%; top:83.5%" aria-hidden="true">5</span>
+          <span class="spot" style="left:43.7%; top:97.6%" aria-hidden="true">6</span>
+          <span class="spot" style="left:95.2%; top:78.7%" aria-hidden="true">7</span>
+        </a>
+        <figcaption>
+          <ol class="tour-legend">
+            <li><b>Tab title.</b> The <span class="ui">?</span> button turns routine hints on and off (warnings always stay). The book button opens the manual.</li>
+            <li><b>Object card.</b> Name, vertex and face count, and whether it has UVs yet. <span class="ui">+ New</span> makes a new mesh or adds a part.</li>
+            <li><b>Selection card.</b> <span class="ui">Vertex 1</span> <span class="ui">Edge 2</span> <span class="ui">Face 3</span>, then <span class="ui">Grow</span> <span class="ui">Shrink</span> <span class="ui">Linked</span>, <span class="ui">Skip backfaces</span>, <span class="ui">Gizmo</span> and <span class="ui">Mirror</span>. The grey line under it is a tiny cheat sheet.</li>
+            <li><b>Tools for the current mode.</b> Face mode shows face tools, Edge mode shows edge tools, and so on.</li>
+            <li><b>Folded extras.</b> <span class="ui">Simplify selection</span>, <span class="ui">Whole mesh</span> and <span class="ui">Shortcuts</span>. The grey text tells you what's inside.</li>
+            <li><b>Footer.</b> What's selected right now, and <span class="ui">Next: Sculpt →</span> to move on.</li>
+            <li><b>The rail.</b> Model, Sculpt, Retopo, UVs, Paint, Colliders, Export. Top to bottom is the usual order.</li>
+          </ol>
+        </figcaption>
+      </figure>
+
+      <aside class="note note--guide">
+        <h3>Moving around the Scene view</h3>
+        <p>These are Unity's own keys, Kelpo leaves them alone: <span class="combo"><kbd>Alt</kbd><span class="plus">+</span>drag</span> to orbit, middle-drag to pan, scroll to zoom, right-drag to look around, and <kbd>F</kbd> to frame the selected object.</p>
+        <p>Want a different key for opening the window? <span class="path">Edit<i>›</i>Shortcuts</span>, then search for “Kelpo”.</p>
+      </aside>
+    </section>
+
+    <section class="step" id="basics">
+      <div class="step-head"><span class="step-no">2</span><h2>Vertices, edges and faces</h2></div>
+      <p class="why">Every mesh is made of these three things. The mode you're in decides which of them your clicks pick up.</p>
+      <ul class="vef">
+        <li>
+          <svg viewBox="10 8 165 140" aria-hidden="true">
+            <g stroke="#22241f" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M30 55 L115 55 L115 135 L30 135 Z" fill="#fbf8ef"/>
+              <path d="M30 55 L70 20 L155 20 L115 55 Z" fill="#efe9d8"/>
+              <path d="M115 55 L155 20 L155 100 L115 135 Z" fill="#e2dccb"/>
+              <path d="M70 20 L70 100 L155 100 M70 100 L30 135" fill="none" stroke-opacity=".28" stroke-dasharray="4 5"/>
+            </g>
+            <g fill="#4d84c4"><circle cx="30" cy="55" r="3.5"/><circle cx="30" cy="135" r="3.5"/><circle cx="115" cy="135" r="3.5"/><circle cx="70" cy="20" r="3.5"/><circle cx="155" cy="20" r="3.5"/><circle cx="155" cy="100" r="3.5"/></g>
+            <circle cx="115" cy="55" r="8" fill="#f0c43c" stroke="#22241f" stroke-width="2.2"/>
+          </svg>
+          <h3>Vertex <kbd>1</kbd></h3>
+          <p>A single point. Every corner of the mesh is one. Move a vertex and everything attached to it bends along.</p>
+        </li>
+        <li>
+          <svg viewBox="10 8 165 140" aria-hidden="true">
+            <g stroke="#22241f" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M30 55 L115 55 L115 135 L30 135 Z" fill="#fbf8ef"/>
+              <path d="M30 55 L70 20 L155 20 L115 55 Z" fill="#efe9d8"/>
+              <path d="M115 55 L155 20 L155 100 L115 135 Z" fill="#e2dccb"/>
+              <path d="M70 20 L70 100 L155 100 M70 100 L30 135" fill="none" stroke-opacity=".28" stroke-dasharray="4 5"/>
+            </g>
+            <path d="M115 55 L115 135" stroke="#22241f" stroke-width="10" stroke-linecap="round"/>
+            <path d="M115 55 L115 135" stroke="#f0c43c" stroke-width="5.5" stroke-linecap="round"/>
+          </svg>
+          <h3>Edge <kbd>2</kbd></h3>
+          <p>A straight line joining two vertices. Edges outline the shape. Select a whole ring of them to cut, slide or scale it.</p>
+        </li>
+        <li>
+          <svg viewBox="10 8 165 140" aria-hidden="true">
+            <g stroke="#22241f" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M30 55 L115 55 L115 135 L30 135 Z" fill="#fbf8ef"/>
+              <path d="M30 55 L70 20 L155 20 L115 55 Z" fill="#f0c43c"/>
+              <path d="M115 55 L155 20 L155 100 L115 135 Z" fill="#e2dccb"/>
+              <path d="M70 20 L70 100 L155 100 M70 100 L30 135" fill="none" stroke-opacity=".28" stroke-dasharray="4 5"/>
+            </g>
+          </svg>
+          <h3>Face <kbd>3</kbd></h3>
+          <p>The surface filled in between edges. It's what you see, extrude and later paint. A face can have three, four or more sides.</p>
+        </li>
+      </ul>
+      <p style="margin-top:18px">Switch modes with <kbd>1</kbd>, <kbd>2</kbd> and <kbd>3</kbd> while the mouse is over the Scene view, or with the three buttons at the top of the selection card. Each mode shows its own thing: blue dots in Vertex mode, blue lines in Edge mode, and in Face mode the face under your cursor gets a white outline. Whatever you select turns yellow, and the tools in the window change to match.</p>
+      <figure class="clip">
+        <a class="clip-frame" href="media/00-modes.mp4" data-clip aria-label="Play clip: switching between Vertex, Edge and Face mode, then selecting a face, a vertex and an edge">
+          <img src="media/00-modes.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:29</span>
+        </a>
+        <figcaption>Flipping through the three modes, then picking faces, one vertex and one edge on a fresh cylinder. <span class="speed">1.1× speed</span></figcaption>
+      </figure>
+
+      <h3>How to select</h3>
+      <p>Almost every modeling step below is the same loop: pick a mode, select something, drag the gizmo.</p>
+      <div class="cheat">
+        <dl>
+          <dt>click</dt>
+          <dd>Select one thing. Click empty space to clear.</dd>
+          <dt><span class="combo"><kbd>Shift</kbd><span class="plus">+</span>click</span></dt>
+          <dd>Add to the selection.</dd>
+          <dt><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>click</span></dt>
+          <dd>Remove from the selection.</dd>
+          <dt>drag on empty space</dt>
+          <dd>Box select. Anything the box touches counts.</dd>
+          <dt><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>A</kbd></span></dt>
+          <dd>Everything in the current mode. Only this mesh, not every object in the scene.</dd>
+          <dt><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>click</span> a mode</dt>
+          <dd>Convert the selection instead of starting over. A face becomes its corner vertices or its border edges, a row of edges becomes the faces between them. A plain click on a mode starts a fresh selection.</dd>
+          <dt><span class="ui">Grow</span> <span class="ui">Shrink</span> <span class="ui">Linked</span></dt>
+          <dd>One ring more, one ring less, or the whole connected piece.</dd>
+          <dt><kbd>L</kbd> / <span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>L</kbd></span></dt>
+          <dd>In Edge mode: the whole loop around the mesh, or the whole ring of edges running across it. Same as <span class="ui">Loop</span> and <span class="ui">Ring</span> in the Edge tools.</dd>
+          <dt><kbd>W</kbd> <kbd>E</kbd> <kbd>R</kbd></dt>
+          <dd>Move, rotate, scale. These are Unity's own tools and they work on your selection.</dd>
+          <dt><span class="combo"><kbd>Shift</kbd><span class="plus">+</span>drag</span> the gizmo</dt>
+          <dd>Extrude. Whatever you drag grows new faces first, then follows the move, rotate or scale. This is the big one.</dd>
+          <dt><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span> / <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Y</kbd></span></dt>
+          <dd>Undo and redo. Selections are undoable too, so a stray click that wiped your selection is one undo away.</dd>
+        </dl>
+      </div>
+      <p style="margin-top:14px">On a Mac, use <kbd>Cmd</kbd> for the window shortcut, select all and the mode convert.</p>
+    </section>
+
+    <section class="step" id="cylinder">
+      <div class="step-head"><span class="step-no">3</span><h2>Start from a 16-sided cylinder</h2></div>
+      <p class="why">Start from the primitive closest to the final shape. A barrel is a cylinder that ate well.</p>
+      <ol class="do">
+        <li>With nothing selected, the Model tab shows <span class="ui">Start a new mesh</span> with five tiles: <span class="ui">Cube</span>, <span class="ui">Plane</span>, <span class="ui">Sphere</span>, <span class="ui">Cylinder</span> and <span class="ui">Custom</span>.</li>
+        <li>Leave <span class="ui">Placement</span> on <span class="ui">Scene View Focus</span> so the shape lands where you're looking. Pick <span class="ui">World Origin</span> if you want it exactly at 0, 0, 0.</li>
+        <li>Click <span class="ui">Cylinder</span>. The object card now says <b>Cylinder · 32 vertices · 18 faces · No UVs</b>, and Face mode is on.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/01-cylinder.mp4" data-clip aria-label="Play clip: the primitive tiles up close, the Custom panel, then clicking Cylinder">
+          <img src="media/01-cylinder.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:08</span>
+        </a>
+        <figcaption>The tiles up close, a peek at <span class="ui">Custom</span>, then one click on <span class="ui">Cylinder</span>. If the new shape lands off screen, press <kbd>F</kbd>. <span class="speed">real speed</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <a href="media/custom.jpg"><img src="media/custom.jpg" width="584" height="400" loading="lazy" alt="The Custom panel: Shape Cube, Plane, Sphere or Cylinder, Size X Y Z, Segments X Y Z, a Create cube button and Reset."></a>
+        <figcaption><span class="ui">Custom</span> lets you set the size and segments before the shape is made. The settings stay for this window session. The quick tiles always use the standard sizes, and the quick cylinder has 16 sides, which is plenty for a barrel.</figcaption>
+      </figure>
+    </section>
+
+    <section class="step" id="rim">
+      <div class="step-head"><span class="step-no">4</span><h2>Give it a rim and a sunken lid</h2></div>
+      <p class="why">Holding Shift turns the move and scale gizmos into extrude tools. A rim is just a face shrunk inward, then pushed down.</p>
+      <ol class="do">
+        <li>In Face mode (<kbd>3</kbd>), click the top face.</li>
+        <li>Press <kbd>R</kbd>. Hold <kbd>Shift</kbd> and drag the center cube of the gizmo inward a little. A new ring of faces appears around the edge. That's the rim.</li>
+        <li>Press <kbd>W</kbd>. Hold <kbd>Shift</kbd> and drag the green arrow down. The middle sinks and the rim gets an inner wall. The card now reads 64 vertices · 50 faces.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/02-rim.mp4" data-clip aria-label="Play clip: Shift-scale the top face inward, then Shift-move it down">
+          <img src="media/02-rim.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:07</span>
+        </a>
+        <figcaption>Shift + scale inward, then Shift + move down. <span class="speed">real speed</span></figcaption>
+      </figure>
+      <p class="keys"><b>keys here</b> <kbd>3</kbd> <kbd>R</kbd> <kbd>W</kbd> <span class="combo"><kbd>Shift</kbd><span class="plus">+</span>drag</span></p>
+    </section>
+
+    <section class="step" id="bulge">
+      <div class="step-head"><span class="step-no">5</span><h2>Bulge it with loop cuts</h2></div>
+      <p class="why">A plain cylinder has nothing in the middle to bend. Each loop cut adds a ring you can scale, and scaling whole rings keeps the barrel round.</p>
+      <ol class="do">
+        <li>Press <kbd>2</kbd> for Edge mode and click one upright edge on the side.</li>
+        <li>Press <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>R</kbd></span> (or <span class="ui">Loop cut</span> under Edge tools). A new ring goes all the way round, and it's already selected.</li>
+        <li>Press <kbd>R</kbd> and drag the center cube outward. The middle of the barrel swells.</li>
+        <li>Click an upright edge again, <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>R</kbd></span>, <kbd>R</kbd>. Scale the rings near the top and bottom out a little less than the middle one. Five rings did it for this barrel.</li>
+      </ol>
+      <p>Need to grab a ring again later? Click one of its edges and press <kbd>L</kbd> to select the whole loop.</p>
+      <figure class="clip">
+        <a class="clip-frame" href="media/03-bulge.mp4" data-clip aria-label="Play clip: loop cut with Ctrl+R and scale each new ring to make the bulge">
+          <img src="media/03-bulge.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:18</span>
+        </a>
+        <figcaption>Edge, <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>R</kbd></span>, scale. Repeat. <span class="speed">1.2× speed</span></figcaption>
+      </figure>
+      <p class="keys"><b>keys here</b> <kbd>2</kbd> <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>R</kbd></span> <kbd>R</kbd> <kbd>L</kbd></p>
+    </section>
+
+    <section class="step" id="close-top">
+      <div class="step-head"><span class="step-no">6</span><h2>Close the top with one center point</h2></div>
+      <p class="why">A lid that's one big 16-sided face shades and paints badly. Welding its corners into a single center point turns it into a neat fan of triangles.</p>
+      <ol class="do">
+        <li>In Face mode (<kbd>3</kbd>), click the sunken lid face.</li>
+        <li>Press <kbd>R</kbd>, hold <kbd>Shift</kbd> and drag the center cube inward to inset it once more.</li>
+        <li>Hold <kbd>Ctrl</kbd> and click <span class="ui">Vertex</span> at the top of the selection card. The face turns into its 16 corner vertices, still selected.</li>
+        <li>Open <span class="ui">Whole mesh</span> and click <span class="ui">Weld selected vertices</span>. It merges them at their average position: one clean center point.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/04-close-top.mp4" data-clip aria-label="Play clip: inset the lid, Ctrl-click Vertex, then Weld selected vertices">
+          <img src="media/04-close-top.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:11</span>
+        </a>
+        <figcaption>Inset, <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>click</span> <span class="ui">Vertex</span>, <span class="ui">Weld selected vertices</span>. Then a look at the fan in Edge mode. <span class="speed">1.1× speed</span></figcaption>
+      </figure>
+      <p class="keys"><b>keys here</b> <kbd>3</kbd> <kbd>R</kbd> <span class="combo"><kbd>Shift</kbd><span class="plus">+</span>drag</span> <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>click Vertex</span></p>
+    </section>
+
+    <section class="step" id="shading">
+      <div class="step-head"><span class="step-no">7</span><h2>Choose crisp or soft shading</h2></div>
+      <p class="why">Shading doesn't change the shape at all, only how light falls across it. It's what makes a 16-sided cylinder read as round.</p>
+      <p>Every edge is either <b>soft</b>, where light flows smoothly over it, or <b>hard</b>, where you get a crisp crease. In other 3D programs you might know this as smoothing groups or sharp edges. Kelpo doesn't keep numbered smoothing groups. It decides per edge, with three choices under <span class="ui">Whole mesh</span>:</p>
+      <div class="cheat">
+        <dl>
+          <dt><span class="ui">Flat</span></dt>
+          <dd>Every edge is hard. You see each face as its own flat panel.</dd>
+          <dt><span class="ui">Smooth</span></dt>
+          <dd>Every edge is soft. Round parts look great, but corners like the rim go mushy too.</dd>
+          <dt><span class="ui">Auto</span></dt>
+          <dd>Edges where the faces meet at more than <span class="ui">Smoothing angle</span> stay hard. Gentler ones get smoothed.</dd>
+        </dl>
+      </div>
+      <ol class="do">
+        <li>Open <span class="ui">Whole mesh</span> and try <span class="ui">Flat</span>, then <span class="ui">Smooth</span>, to see the two extremes.</li>
+        <li>Settle on <span class="ui">Auto</span> and drag the <span class="ui">Smoothing angle</span> slider while you watch the rim. You can also drag the label itself to scrub, or type a number. I landed on about 43.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/05-shading.mp4" data-clip aria-label="Play clip: switching shading between Flat, Smooth and Auto, then tuning the smoothing angle">
+          <img src="media/05-shading.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:13</span>
+        </a>
+        <figcaption>Flat, Smooth, then Auto and the slider. Same mesh the whole time. <span class="speed">real speed</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <a href="media/whole-mesh.jpg"><img src="media/whole-mesh.jpg" width="590" height="224" loading="lazy" alt="The Whole mesh card: Shading Flat, Auto or Smooth with Auto chosen, Smoothing angle 43.18, Center pivot, Flip normals, Weld distance 0.001 with Weld all, and Save mesh as asset."></a>
+        <figcaption>The <span class="ui">Whole mesh</span> card as I left it. Adding or deleting faces can reset the shading, so give it another look when the shape is done.</figcaption>
+      </figure>
+    </section>
+
+    <section class="step" id="band">
+      <div class="step-head"><span class="step-no">8</span><h2>Cut a band for the hoop</h2></div>
+      <p class="why">The hoop starts life as a copy of the barrel's own faces, so it fits the curve exactly. First we need a band of faces the right height.</p>
+      <ol class="do">
+        <li>In Edge mode (<kbd>2</kbd>), click an upright edge and press <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>R</kbd></span> for a new ring.</li>
+        <li>Press <kbd>W</kbd> and drag it up toward the rim. Then <kbd>R</kbd> to scale it so it sits on the curve again. The strip between this ring and the one above is the band.</li>
+        <li>Click one upright edge inside the band and press <span class="ui">Ring</span> (<span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>L</kbd></span>). All 16 edges around the band get selected.</li>
+        <li>Hold <kbd>Ctrl</kbd> and click <span class="ui">Face</span>. The edges turn into the 16 faces between them. The footer says <b>16 faces selected</b>.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/06-band.mp4" data-clip aria-label="Play clip: loop cut, move and scale the new ring, then Ring and Ctrl-click Face to select the band">
+          <img src="media/06-band.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:18</span>
+        </a>
+        <figcaption>New ring, move it up, then <span class="ui">Ring</span> and <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>click</span> <span class="ui">Face</span>. <span class="speed">1.1× speed</span></figcaption>
+      </figure>
+      <p class="keys"><b>keys here</b> <kbd>2</kbd> <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>R</kbd></span> <kbd>W</kbd> <kbd>R</kbd> <span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>L</kbd></span> <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>click Face</span></p>
+    </section>
+
+    <section class="step" id="hoop">
+      <div class="step-head"><span class="step-no">9</span><h2>Turn the band into a hoop</h2></div>
+      <p class="why">Duplicate makes a loose copy inside the same object. Shift-scaling it outward gives it thickness, and it stays part of the barrel for unwrapping and painting later.</p>
+      <ol class="do">
+        <li>With the 16 band faces selected, click <span class="ui">Duplicate</span> in the Face tools. The copy is a separate piece and it's the one selected.</li>
+        <li>Press <kbd>W</kbd> and lift the copy up off the barrel. That's only so you can see what you're doing.</li>
+        <li>Press <kbd>R</kbd>, hold <kbd>Shift</kbd> and drag the center cube outward. The band grows a top and bottom edge and becomes a thick hoop.</li>
+        <li>Click one face of the hoop and press <span class="ui">Linked</span> to select all of it (48 faces).</li>
+        <li>Press <kbd>W</kbd> and drop it back over the band. <kbd>R</kbd> if it needs to hug tighter.</li>
+      </ol>
+      <figure class="shot">
+        <a href="media/face-tools.jpg"><img src="media/face-tools.jpg" width="590" height="266" loading="lazy" alt="The Face tools card: Extrude, Inset with Each face on its own, and Duplicate, Detach and Delete."></a>
+        <figcaption><span class="ui">Duplicate</span> sits in the Face tools, next to <span class="ui">Detach</span> and <span class="ui">Delete</span>.</figcaption>
+      </figure>
+      <figure class="clip">
+        <a class="clip-frame" href="media/07-hoop.mp4" data-clip aria-label="Play clip: Duplicate the band, lift it, Shift-scale it into a thick hoop, select it with Linked and drop it back on">
+          <img src="media/07-hoop.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:25</span>
+        </a>
+        <figcaption><span class="ui">Duplicate</span>, lift, <kbd>Shift</kbd> + scale outward, <span class="ui">Linked</span>, drop it back. <span class="speed">1.1× speed</span></figcaption>
+      </figure>
+      <p class="keys"><b>keys here</b> <kbd>W</kbd> <kbd>R</kbd> <span class="combo"><kbd>Shift</kbd><span class="plus">+</span>drag</span></p>
+    </section>
+
+    <section class="step" id="second-hoop">
+      <div class="step-head"><span class="step-no">10</span><h2>Second hoop, then close the bottom</h2></div>
+      <p class="why">The second hoop is a copy of the first. The bottom gets the same inset-and-weld treatment as the lid.</p>
+      <ol class="do">
+        <li>With the hoop selected (<span class="ui">Linked</span>), click <span class="ui">Duplicate</span>. Move the copy down with <kbd>W</kbd> and fit it with <kbd>R</kbd>.</li>
+        <li>If a hoop floats or sinks, select the barrel ring under it (click an edge, <kbd>L</kbd>) and scale that instead.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/08-second-hoop.mp4" data-clip aria-label="Play clip: select the hoop with Linked, Duplicate it and move the copy down">
+          <img src="media/08-second-hoop.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:15</span>
+        </a>
+        <figcaption><span class="ui">Linked</span>, <span class="ui">Duplicate</span>, move it down. <span class="speed">1.1×, then 1.5×</span></figcaption>
+      </figure>
+      <ol class="do" start="3" style="counter-reset:do 2">
+        <li>Orbit underneath with <span class="combo"><kbd>Alt</kbd><span class="plus">+</span>drag</span> and click the bottom face in Face mode.</li>
+        <li><kbd>R</kbd> + <span class="combo"><kbd>Shift</kbd><span class="plus">+</span>drag</span> inward to inset it, <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>click</span> <span class="ui">Vertex</span>, then <span class="ui">Weld selected vertices</span>. Same as the lid.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/09-bottom.mp4" data-clip aria-label="Play clip: inset the bottom face, Ctrl-click Vertex and weld">
+          <img src="media/09-bottom.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:13</span>
+        </a>
+        <figcaption>The bottom, closed the same way as the top. <span class="speed">1.1× speed</span></figcaption>
+      </figure>
+      <p>The finished model is <b>290 vertices · 272 faces</b>. That's the shape done. Everything from here on is surface.</p>
+      <aside class="note note--guide">
+        <h3>Finish the shape before you unwrap</h3>
+        <p>Moving vertices around later is fine, the UVs follow. But adding, deleting or welding faces after unwrapping means unwrapping again, and paint can't follow faces that didn't exist when it was painted.</p>
+      </aside>
+    </section>
+
+    <p class="part-head"><b>part 2</b> UVs</p>
+
+    <section class="step" id="unwrap">
+      <div class="step-head"><span class="step-no">11</span><h2>Unwrap it for painting</h2></div>
+      <p class="why">Painting needs every face to have its own patch of texture. Unique unwrap lays the mesh out flat with no overlaps.</p>
+      <ol class="do">
+        <li>Click <span class="ui">UVs</span> on the rail. A barrel can skip Sculpt and Retopo. The card says the mesh has no UVs yet.</li>
+        <li>Click <span class="ui ui--main">Unique unwrap · 1 object</span>.</li>
+        <li>Check the <span class="ui">Layout</span> card: it should say <b>Paint-ready: no overlaps, everything inside 0–1</b>. Mine came out as 25 islands covering 36% of the square.</li>
+        <li><span class="ui">Seams</span> draws the cuts on the mesh. <span class="ui">Checker</span> puts a test pattern on it for a moment.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/10-unwrap.mp4" data-clip aria-label="Play clip: Unique unwrap gives a paint-ready UV layout with seams shown on the barrel">
+          <img src="media/10-unwrap.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:08</span>
+        </a>
+        <figcaption>One click. The orange lines on the barrel are the seams. <span class="speed">real speed</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <a href="media/uv-layout.jpg"><img src="media/uv-layout.jpg" width="610" height="404" loading="lazy" alt="The UVs Layout card after unwrapping: a preview of the islands, Islands 25, Coverage 36% of 0 to 1, Density about 222 texels per meter, Checker and Seams buttons, and the note Paint-ready, no overlaps, everything inside 0 to 1."></a>
+        <figcaption><span class="ui">Box project</span> further down is the other option: tiling UVs for a texture you assign yourself. For hand painting, use Unique unwrap.</figcaption>
+      </figure>
+    </section>
+
+    <p class="part-head"><b>part 3</b> paint</p>
+
+    <section class="step" id="start-paint">
+      <div class="step-head"><span class="step-no">12</span><h2>Start a paint session</h2></div>
+      <p class="why">Painting happens in a session: Kelpo sets up working textures on the object, and you paint straight onto the mesh in the Scene view.</p>
+      <ol class="do">
+        <li>Click <span class="ui">Paint</span> on the rail.</li>
+        <li>Under <span class="ui">New session</span>, pick a <span class="ui">Resolution</span>. I used <span class="ui">2048</span>, the biggest. <span class="ui">1024</span> uses a lot less memory and is plenty for small props.</li>
+        <li>Click <span class="ui ui--main">Start painting</span>. The card now shows <b>2048 px · Slot 1 · 1 layer · UVs ready</b>.</li>
+      </ol>
+      <figure class="shot">
+        <a href="media/paint-start.jpg"><img src="media/paint-start.jpg" width="610" height="434" loading="lazy" alt="The Paint start screen: Continue with a Session file field, New session with Resolution 256, 512, 1024 or 2048, a memory warning, Start from the existing material and maps ticked, and the Start painting button."></a>
+        <figcaption>The yellow note is about memory: the working textures live in the scene until you save them as assets.</figcaption>
+      </figure>
+      <figure class="clip">
+        <a class="clip-frame" href="media/11-start-paint.mp4" data-clip aria-label="Play clip: choosing 2048 and starting a paint session">
+          <img src="media/11-start-paint.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:08</span>
+        </a>
+        <figcaption>Resolution, then <span class="ui">Start painting</span>. <span class="speed">real speed</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="step" id="base-coat">
+      <div class="step-head"><span class="step-no">13</span><h2>Pick a base color and fill</h2></div>
+      <p class="why">In Material mode one stroke lays down color, metalness and shininess together, so you think in materials instead of separate maps.</p>
+      <ol class="do">
+        <li>Leave <span class="ui">Channel</span> on <span class="ui">Material</span>.</li>
+        <li>Click the <span class="ui">Color</span> swatch and pick a warm orange-brown in Unity's color picker. Mine is <b>BC6C0B</b>.</li>
+        <li>Set <span class="ui">Metallic</span> to 0 (wood isn't metal) and <span class="ui">Smoothness</span> to about 0.3 (dull, not glossy).</li>
+        <li>Scroll down to <span class="ui">Layers</span> and click <span class="ui">Fill layer</span>. The whole barrel takes the color.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/12-base-coat.mp4" data-clip aria-label="Play clip: choosing the color, metallic and smoothness, then Fill layer">
+          <img src="media/12-base-coat.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:19</span>
+        </a>
+        <figcaption>Color, smoothness, then <span class="ui">Fill layer</span>. <span class="speed">1.2×, then real speed</span></figcaption>
+      </figure>
+      <p>The other channel buttons, <span class="ui">Albedo</span>, <span class="ui">Metallic</span>, <span class="ui">Smooth</span> and <span class="ui">Height</span>, paint one map at a time. We'll use Height in a moment.</p>
+    </section>
+
+    <section class="step" id="layers">
+      <div class="step-head"><span class="step-no">14</span><h2>Work in layers</h2></div>
+      <p class="why">Layers keep each idea separate: wood, grooves, metal, dents. You can fade or hide one without touching the others.</p>
+      <ol class="do">
+        <li>In <span class="ui">Layers</span>, click <span class="ui">+</span>. It offers <span class="ui">Empty layer</span> or <span class="ui">Carved material preset</span>. Pick <span class="ui">Empty layer</span>.</li>
+        <li>Click the new layer's name and type a better one. I called mine <b>WoodBase</b>.</li>
+        <li>The circle on the left picks which layer you paint on. The eye shows or hides it, and the slider is its opacity. <span class="ui">Base</span> is always there underneath.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/13-layer.mp4" data-clip aria-label="Play clip: add an Empty layer and rename it WoodBase">
+          <img src="media/13-layer.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:15</span>
+        </a>
+        <figcaption><span class="ui">+</span>, <span class="ui">Empty layer</span>, then rename it. <span class="speed">1.2× speed</span></figcaption>
+      </figure>
+      <div class="cheat">
+        <dl>
+          <dt><kbd>[</kbd> / <kbd>]</kbd> or <span class="combo"><kbd>Shift</kbd><span class="plus">+</span>scroll</span></dt>
+          <dd>Brush smaller or bigger. You'll see the ring on the barrel change.</dd>
+          <dt><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>scroll</span></dt>
+          <dd>Brush flow: how much paint each dab lays down.</dd>
+          <dt><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>click</span></dt>
+          <dd>Eyedropper. Picks up color, metallic and smoothness from the surface.</dd>
+          <dt><span class="combo"><kbd>Shift</kbd><span class="plus">+</span>drag</span></dt>
+          <dd>Erase on the current layer so the ones below show through. Base can't be erased.</dd>
+          <dt><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span> / <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Y</kbd></span></dt>
+          <dd>Undo and redo strokes, fills and layer changes.</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section class="step" id="paint-area">
+      <div class="step-head"><span class="step-no">15</span><h2>Paint only the wood</h2></div>
+      <p class="why">If the brush can't reach the hoops, you can paint the wood with big, lazy strokes and still get clean edges.</p>
+      <ol class="do">
+        <li>Open <span class="ui">Paint only on</span> and click <span class="ui">Pick in Scene</span>. Kelpo jumps to the Model tab with a <span class="ui">Choosing a paint area</span> card.</li>
+        <li>Click one face of the barrel body and press <span class="ui">Linked</span>. The hoops are separate pieces, so only the body gets selected. <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>click</span> any faces you want to leave out. I dropped the top.</li>
+        <li>Click <span class="ui">Return to Paint</span>.</li>
+        <li>Open the <span class="ui">Faces</span> dropdown and choose <span class="ui">Use Model selection</span>. It now reads <b>Selection · 160 faces</b>.</li>
+      </ol>
+      <p>With <span class="ui">Tint the protected faces</span> on, everything you can't paint gets a pale tint. The tint hides while you're mid-stroke, so the colors flash a bit. That's normal.</p>
+      <figure class="clip">
+        <a class="clip-frame" href="media/14-paint-area.mp4" data-clip aria-label="Play clip: Pick in Scene, select the barrel body with Linked, Return to Paint, Use Model selection, then green test strokes stop at the hoops">
+          <img src="media/14-paint-area.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:24</span>
+        </a>
+        <figcaption>Picking the wood, then a test in green: the strokes stop dead at the hoops. <span class="speed">1.1× speed</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <a href="media/paint-area.jpg"><img src="media/paint-area.jpg" width="594" height="260" loading="lazy" alt="The Paint only on card: Faces set to Selection, 160 faces, a Pick in Scene button, Tint the protected faces ticked, Height channel Everywhere, and a Limits new strokes chip."></a>
+        <figcaption><span class="ui">Faces</span> → <span class="ui">All faces</span> lifts the limit again. If you choose <span class="ui">Use Model selection</span> with nothing picked, Kelpo tells you to use <span class="ui">Pick in Scene</span> first.</figcaption>
+      </figure>
+    </section>
+
+    <section class="step" id="presets">
+      <div class="step-head"><span class="step-no">16</span><h2>Save a brush you like</h2></div>
+      <p class="why">A saved brush remembers the color, tip, size and settings, so you can jump between wood and metal in one click.</p>
+      <ol class="do">
+        <li>Next to <span class="ui">My brushes</span>, click <span class="ui">+</span>.</li>
+        <li>Type a name in <span class="ui">Save as</span>, mine is <b>WoodBaseBrush</b>, and click <span class="ui">Save</span>.</li>
+        <li>Later, pick it from the <span class="ui">My brushes</span> dropdown to get it back. <span class="ui">Update</span> overwrites it with your current settings.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/15-preset.mp4" data-clip aria-label="Play clip: saving the current brush as WoodBaseBrush and loading presets from the list">
+          <img src="media/15-preset.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:13</span>
+        </a>
+        <figcaption>Saving <b>WoodBaseBrush</b>, then switching between presets. <span class="speed">1.5×, then real speed</span></figcaption>
+      </figure>
+      <p><span class="ui">Start from</span> has four quick starting points too: <span class="ui">Soft</span>, <span class="ui">Detail</span>, <span class="ui">Tile</span> and <span class="ui">Wear</span>.</p>
+    </section>
+
+    <section class="step" id="stamps">
+      <div class="step-head"><span class="step-no">17</span><h2>Stamp planks with an image</h2></div>
+      <p class="why">An image tip turns any texture into a stamp. One plank image gives you every plank line on the barrel.</p>
+      <ol class="do">
+        <li>Set <span class="ui">Tip</span> to <span class="ui">Image</span>. Kelpo asks for an image.</li>
+        <li>Click the circle on the <span class="ui">Image</span> field and pick a texture from your project. Mine is a plank-stripe image called <b>woodplanks_txt</b>.</li>
+        <li>Leave <span class="ui">Color</span> on <span class="ui">Multiply with image</span> and <span class="ui">Shape from</span> on <span class="ui">Alpha</span>. Use <span class="ui">Brightness</span> or <span class="ui">Darkness</span> for images without transparency.</li>
+        <li>Make the brush big (<span class="combo"><kbd>Shift</kbd><span class="plus">+</span>scroll</span>) and stamp around the barrel. Dark plank lines appear.</li>
+      </ol>
+      <figure class="shot">
+        <a href="media/image-tip.jpg"><img src="media/image-tip.jpg" width="600" height="430" loading="lazy" alt="The Brush card with My brushes WoodBaseBrush, Tip set to Image, Image woodplanks_txt, Color Multiply with image, Shape from Alpha, Rotation 0 and Random rotation per dab."></a>
+        <figcaption><span class="ui">Rotation</span> turns the stamp. <span class="ui">Random rotation per dab</span> is handy for scratches and dirt, less so for straight planks.</figcaption>
+      </figure>
+      <figure class="clip">
+        <a class="clip-frame" href="media/16-stamps.mp4" data-clip aria-label="Play clip: Image tip with the woodplanks texture, then stamping plank lines">
+          <img src="media/16-stamps.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:18</span>
+        </a>
+        <figcaption>Choosing the image, then stamping. <span class="speed">1.2× speed</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="step" id="height">
+      <div class="step-head"><span class="step-no">18</span><h2>Raise the planks with Height</h2></div>
+      <p class="why">Height paints bumps without touching the mesh. Kelpo turns it into a normal map as you go, so the planks catch the light.</p>
+      <ol class="do">
+        <li>Add another <span class="ui">Empty layer</span> and call it <b>WoodDetailHeight</b>. Height gets its own layer so you can fade it later.</li>
+        <li>Set <span class="ui">Channel</span> to <span class="ui">Height</span>. The hint explains it: <b>0.5 is neutral, lower carves, higher raises</b>.</li>
+        <li>Drag the value to 1 to raise, or under 0.5 to carve. I tried carving first, then went with raising.</li>
+        <li>Keep the plank stamp and go all the way round. I used Radius about 0.6, Hardness 0.12, Flow 1.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/17-height.mp4" data-clip aria-label="Play clip: new WoodDetailHeight layer, Height channel, then stamping raised planks around the barrel">
+          <img src="media/17-height.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:24</span>
+        </a>
+        <figcaption>New layer, <span class="ui">Height</span>, then stamping. The shading updates while you paint. <span class="speed">1.5×, then 2×</span></figcaption>
+      </figure>
+      <p class="keys"><b>keys here</b> <span class="combo"><kbd>Shift</kbd><span class="plus">+</span>scroll</span> <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>scroll</span></p>
+    </section>
+
+    <section class="step" id="grooves">
+      <div class="step-head"><span class="step-no">19</span><h2>Dark grooves only where they belong</h2></div>
+      <p class="why">Paint only on can also follow the Height you painted. Limit the brush to the cavities and dark paint lands only in the gaps between planks, however sloppy the stroke.</p>
+      <ol class="do">
+        <li>Add an <span class="ui">Empty layer</span> called <b>ColorDetail</b>.</li>
+        <li>In <span class="ui">Paint only on</span>, open <span class="ui">Height channel</span>: <span class="ui">Everywhere</span>, <span class="ui">Carved</span>, <span class="ui">Raised</span>, <span class="ui">Edges</span> or <span class="ui">Cavities</span>. Click <span class="ui">Preview</span> to see where the brush may paint. That's the orange.</li>
+        <li>Choose <span class="ui">Cavities</span> and turn <span class="ui">Curvature</span> down until only thin lines in the grooves stay orange. Mine ended at 0.003, with <span class="ui">Softness</span> 0.032.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/18-cavities.mp4" data-clip aria-label="Play clip: new ColorDetail layer, Height channel limit with Preview, trying Carved, Raised, Edges and Cavities">
+          <img src="media/18-cavities.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:26</span>
+        </a>
+        <figcaption>New layer, then trying each limit with <span class="ui">Preview</span> on. <span class="speed">1.2× speed</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <a href="media/mask.jpg"><img src="media/mask.jpg" width="584" height="408" loading="lazy" alt="The Paint only on card with Height channel set to Cavities, Preview on, Curvature 0.003 and Softness 0.032, and a Previewing the brush Height limit badge above it."></a>
+        <figcaption>This limit belongs to the brush, not the layer. Paint that's already down stays put if you change it.</figcaption>
+      </figure>
+      <ol class="do" start="4" style="counter-reset:do 3">
+        <li>Set the brush up: <span class="ui">Tip</span> <span class="ui">Organic</span>, <span class="ui">Start from</span> <span class="ui">Wear</span>. Back in <span class="ui">Material</span> channel, pick a dark brown (<b>71512B</b>), <span class="ui">Metallic</span> 0, <span class="ui">Smoothness</span> almost 0.</li>
+        <li>Paint over the whole barrel. The first stroke ends the preview, and the brown only lands in the grooves.</li>
+        <li>Too strong? Pull the ColorDetail opacity slider down. Mine sits at 44%.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/19-grooves.mp4" data-clip aria-label="Play clip: Organic tip with the Wear preset, dark brown color, painting the grooves and lowering the layer opacity">
+          <img src="media/19-grooves.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:26</span>
+        </a>
+        <figcaption>Brush setup, a few strokes, then the opacity slider. <span class="speed">1–1.6×</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="step" id="metal">
+      <div class="step-head"><span class="step-no">20</span><h2>Metal hoops</h2></div>
+      <p class="why">Same trick the other way round: limit the brush to the hoops and paint them with a shiny metal material.</p>
+      <ol class="do">
+        <li>Add an <span class="ui">Empty layer</span> called <b>METAL</b>.</li>
+        <li><span class="ui">Pick in Scene</span> again. Click a face on the top hoop, <span class="combo"><kbd>Shift</kbd><span class="plus">+</span>click</span> one on the bottom hoop, then <span class="ui">Linked</span>. Both hoops are selected, 96 faces.</li>
+        <li><span class="ui">Return to Paint</span>, then <span class="ui">Faces</span> → <span class="ui">Use Model selection</span>. Now the wood is protected.</li>
+        <li>Pick a metal brush. I had one saved already, <b>MetalRimBase</b>: light grey, <span class="ui">Metallic</span> 1, <span class="ui">Smoothness</span> 0.5, Organic tip. Loading a preset also sets its own Height limit, here back to Everywhere.</li>
+        <li>Paint the hoops, including the top, bottom and the edges underneath.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/20-metal.mp4" data-clip aria-label="Play clip: new METAL layer, picking both hoops as the paint area, loading the MetalRimBase preset and painting">
+          <img src="media/20-metal.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:26</span>
+        </a>
+        <figcaption>New layer, both hoops picked, metal preset, paint. <span class="speed">1–1.5×</span></figcaption>
+      </figure>
+      <p class="keys"><b>keys here</b> <span class="combo"><kbd>Shift</kbd><span class="plus">+</span>click</span> <span class="combo"><kbd>Alt</kbd><span class="plus">+</span>drag</span></p>
+    </section>
+
+    <section class="step" id="dents">
+      <div class="step-head"><span class="step-no">21</span><h2>Dents in the metal</h2></div>
+      <p class="why">Carving a few scratches into Height makes the metal look used. On its own layer you can fade them until they're just right.</p>
+      <ol class="do">
+        <li>Add an <span class="ui">Empty layer</span> called <b>MetalDetail</b> and set <span class="ui">Channel</span> to <span class="ui">Height</span>.</li>
+        <li><span class="ui">Tip</span> <span class="ui">Image</span>, and pick a scratch texture. Mine is <b>Rich-scratch-cluster-mask-512</b>.</li>
+        <li>Set the Height value under 0.5 so the stamps carve. Mine is 0.286.</li>
+        <li>Tick <span class="ui">Random rotation per dab</span> so the scratches don't repeat. Use a small brush (about 0.13) and stamp along both hoops.</li>
+        <li>Lower the layer's opacity until the dents are subtle. Mine is at 39%.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/21-dents.mp4" data-clip aria-label="Play clip: MetalDetail layer on Height, scratch image tip, carve value, random rotation, stamping dents and lowering the opacity">
+          <img src="media/21-dents.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:23</span>
+        </a>
+        <figcaption>Layer, scratch stamp, carve value, a few dabs, then the opacity. <span class="speed">about real speed</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <a href="media/layers.jpg"><img src="media/layers.jpg" width="584" height="372" loading="lazy" alt="The Layers card with six layers: MetalDetail, METAL, ColorDetail, WoodDetailHeight, WoodBase and Base, each with an eye, an opacity slider and a Height mask button."></a>
+        <figcaption>The finished stack. Top to bottom: MetalDetail (39%), METAL, ColorDetail (44%), WoodDetailHeight, WoodBase, Base.</figcaption>
+      </figure>
+    </section>
+
+    <section class="step" id="result">
+      <div class="step-head"><span class="step-no">22</span><h2>Look at it, then save</h2></div>
+      <p class="why">Clear the face limit so the tint goes away and you see the real thing. Then make sure the paint doesn't only live in the scene.</p>
+      <ol class="do">
+        <li><span class="ui">Faces</span> → <span class="ui">All faces</span>. The tint disappears.</li>
+        <li>Orbit around (<span class="combo"><kbd>Alt</kbd><span class="plus">+</span>drag</span>) and look for gaps.</li>
+        <li>When you're happy, click <span class="ui ui--main">Save material + textures…</span> in the footer. It writes the material and its texture maps to your project and ends the session.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/22-result.mp4" data-clip aria-label="Play clip: clearing the paint limit to see the finished barrel">
+          <img src="media/22-result.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:08</span>
+        </a>
+        <figcaption><span class="ui">All faces</span>, and there it is. <span class="speed">real speed</span></figcaption>
+      </figure>
+      <aside class="note note--guide">
+        <h3>Want to keep the layers editable?</h3>
+        <p><span class="ui">Save material + textures…</span> keeps the look, not the layer stack. To come back to the layers later, open <span class="ui">Session file</span> and click <span class="ui">Save</span> first. The chip on the object card shows <b>Layers unsaved</b> until you do.</p>
+        <p>In my recording I skipped both and went straight to Export. That works too, Export writes its own copies of the textures.</p>
+      </aside>
+    </section>
+
+    <p class="part-head"><b>part 4</b> colliders &amp; export</p>
+
+    <section class="step" id="collider">
+      <div class="step-head"><span class="step-no">23</span><h2>Add a collider</h2></div>
+      <p class="why">The barrel has 512 triangles. Physics doesn't need that many. A simplified copy keeps it fast.</p>
+      <ol class="do">
+        <li>Click <span class="ui">Colliders</span> on the rail.</li>
+        <li>In <span class="ui">Simplify the mesh</span>, tick <span class="ui">Convex</span>. Unity needs convex colliders on anything with a Rigidbody, and it suits a barrel anyway.</li>
+        <li>Click <span class="ui">Generate collider</span>. The status bar says how many triangles it kept.</li>
+        <li>Change <span class="ui">Keep %</span> and click <span class="ui">Generate collider</span> again until the green wireframe hugs the barrel. I ended at 22% (112 triangles).</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/23-collider.mp4" data-clip aria-label="Play clip: ticking Convex, generating a collider and adjusting Keep percent">
+          <img src="media/23-collider.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:12</span>
+        </a>
+        <figcaption><span class="ui">Convex</span>, <span class="ui">Generate collider</span>, a different <span class="ui">Keep %</span>, generate again. <span class="speed">1.1× speed</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <a href="media/collider-card.jpg"><img src="media/collider-card.jpg" width="440" height="170" loading="lazy" alt="The Simplify the mesh card: Keep percent 22.122, Convex ticked and a Generate collider button."></a>
+      </figure>
+      <h3>Or draw one yourself</h3>
+      <p><span class="ui">Draw a collider</span> builds one from points you click. Choose <span class="ui">Shape</span> <span class="ui">Area</span>, press <span class="ui">Start drawing</span> and click points around the barrel. <kbd>Backspace</kbd> removes the last point and <kbd>Esc</kbd> stops adding. Drag the <span class="ui">Height</span> label to set how tall it is, then <span class="ui">Build collider</span>. <span class="ui">Clear</span> starts over and <span class="ui">Done</span> finishes.</p>
+      <figure class="clip">
+        <a class="clip-frame" href="media/24-collider-draw.mp4" data-clip aria-label="Play clip: drawing an Area collider by clicking points, setting its height and building it">
+          <img src="media/24-collider-draw.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:24</span>
+        </a>
+        <figcaption>Clicking points, setting the height, <span class="ui">Build collider</span>. I deleted this one and kept the generated collider. <span class="speed">1.1–2×</span></figcaption>
+      </figure>
+      <p class="keys"><b>keys here</b> <kbd>Backspace</kbd> <kbd>Esc</kbd> <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span></p>
+    </section>
+
+    <section class="step" id="export">
+      <div class="step-head"><span class="step-no">24</span><h2>Export a prefab</h2></div>
+      <p class="why">Export packs the mesh, textures, material and collider into a normal prefab. It doesn't need Kelpo to work, so you can use it in any scene or project.</p>
+      <ol class="do">
+        <li>Click <span class="ui">Export</span> on the rail and select the barrel.</li>
+        <li>Give it a <span class="ui">Name</span>. It follows the object's name (mine said Cylinder) until you type your own.</li>
+        <li>Check the options. I used <span class="ui">Keep scale on the root</span>, <span class="ui">Write material and texture copies</span> and <span class="ui">Include colliders</span>.</li>
+        <li>Click <span class="ui ui--main">Export as prefab…</span> and choose a folder inside Assets.</li>
+        <li>Kelpo asks what to do with the scene object. <span class="ui">Delete Working Object (Undoable)</span> cleans up, <span class="ui">Keep Working Object</span> keeps it editable.</li>
+      </ol>
+      <figure class="shot">
+        <a href="media/export-card.jpg"><img src="media/export-card.jpg" width="440" height="590" loading="lazy" alt="The Export card: 512 triangles in 1 submesh, 1 material, 1 collider, a note about transient paint maps, Transform Keep scale on the root, Materials Write material and texture copies, Include colliders ticked and the Export as prefab button."></a>
+        <figcaption>If anything fails along the way, the folder is put back the way it was.</figcaption>
+      </figure>
+      <figure class="clip">
+        <a class="clip-frame" href="media/25-export.mp4" data-clip aria-label="Play clip: the export options, Export as prefab, then the Export Complete dialog and Delete Working Object">
+          <img src="media/25-export.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:17</span>
+        </a>
+        <figcaption>Options, <span class="ui">Export as prefab…</span>, then the dialog. I left out the folder picker. <span class="speed">1.3×, then real speed</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <a href="media/export-done.jpg"><img src="media/export-done.jpg" width="440" height="290" loading="lazy" alt="The Kelpo Export Complete dialog: the prefab and its assets are saved, they are independent of the scene working object, and buttons Keep Working Object and Delete Working Object (Undoable)."></a>
+      </figure>
+      <p>The folder now holds the prefab plus its pieces:</p>
+      <figure class="shot">
+        <a href="media/files.jpg"><img src="media/files.jpg" width="500" height="150" loading="lazy" alt="The exported files: Cylinder prefab, Cylinder_Albedo, Cylinder_ColliderMesh, Cylinder_Mat, Cylinder_Mesh, Cylinder_MetallicSmoothness and Cylinder_Normal."></a>
+        <figcaption>Drag the prefab into any scene. Done.</figcaption>
+      </figure>
+    </section>
+
+    <p class="part-head"><b>bonus</b> a burnt variant</p>
+
+    <section class="step" id="convert">
+      <div class="step-head"><span class="step-no">25</span><h2>Make the exported barrel editable again</h2></div>
+      <p class="why">A second barrel doesn't need a second start. Convert the exported one and keep its UVs and paint.</p>
+      <ol class="do">
+        <li>Drag the exported prefab from the Project window into the scene and select it.</li>
+        <li>I removed its Mesh Collider in the Inspector first (right-click the component → Remove Component), since the shape is about to change.</li>
+        <li>In the <span class="ui">Model</span> tab, under <span class="ui">Or convert an existing mesh</span>, keep <span class="ui">Preserve existing UV mapping and textures</span> ticked and click <span class="ui ui--main">Convert selection</span>.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/26-convert.mp4" data-clip aria-label="Play clip: dragging the prefab into the scene and converting it back to an editable Kelpo object">
+          <img src="media/26-convert.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:10</span>
+        </a>
+        <figcaption>Prefab into the scene, then <span class="ui">Convert selection</span>. The card shows <b>UVs stored</b>. <span class="speed">real speed</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <a href="media/convert.jpg"><img src="media/convert.jpg" width="440" height="262" loading="lazy" alt="The Or convert an existing mesh card: Cylinder can be made editable here, Material slots are kept, Preserve existing UV mapping and textures ticked, and the Convert selection button."></a>
+      </figure>
+    </section>
+
+    <section class="step" id="sculpt">
+      <div class="step-head"><span class="step-no">26</span><h2>Rough it up in Sculpt</h2></div>
+      <p class="why">Sculpt pushes vertices around like clay. Moving vertices keeps the UVs, so the paint stays on.</p>
+      <ol class="do">
+        <li>Click <span class="ui">Sculpt</span> on the rail. The brushes are grouped: <span class="ui">Draw</span> <span class="ui">Clay</span> <span class="ui">Inflate</span>, <span class="ui">Grab</span> <span class="ui">Pinch</span> <span class="ui">Crease</span>, <span class="ui">Smooth</span> <span class="ui">Flatten</span> <span class="ui">Refine</span>.</li>
+        <li><span class="ui">Draw</span> with a small brush puts dents and bumps in the planks and hoops.</li>
+        <li><span class="ui">Grab</span> with a big brush pulls the rim, the bottom and the sides out of true. That's what makes it look beaten.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/27-sculpt.mp4" data-clip aria-label="Play clip: Draw brush dents, then Grab pulling the rim and sides out of shape">
+          <img src="media/27-sculpt.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:15</span>
+        </a>
+        <figcaption><span class="ui">Draw</span> first, then <span class="ui">Grab</span>. <span class="speed">real speed, then 1.5×</span></figcaption>
+      </figure>
+      <p class="keys"><b>keys here</b> hold <kbd>Shift</kbd> smooth · hold <kbd>Ctrl</kbd> invert · <kbd>[</kbd> <kbd>]</kbd> size · <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>scroll</span> strength</p>
+    </section>
+
+    <section class="step" id="burnt">
+      <div class="step-head"><span class="step-no">27</span><h2>Paint it burnt</h2></div>
+      <p class="why">Starting from the existing material keeps the old wood underneath, so dark paint and a few orange glints read as charring instead of a new barrel.</p>
+      <ol class="do">
+        <li><span class="ui">Paint</span> → keep <span class="ui">Start from the existing material and maps</span> ticked → <span class="ui ui--main">Start painting</span>. The old look comes in as the Base layer.</li>
+        <li>With the scratch image tip and a big brush, stamp dark greys and browns all over. I went from <b>848484</b> down to <b>4D4949</b> and <b>523015</b>.</li>
+        <li>Pick an orange (<b>D56E1B</b>), drop <span class="ui">Flow</span> to about 0.2 and dab a few ember glints.</li>
+        <li>Switch <span class="ui">Channel</span> to <span class="ui">Metallic</span>, set it to 0 and paint over everything. Then <span class="ui">Smooth</span> at 0. Charred wood is matte.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/28-burnt.mp4" data-clip aria-label="Play clip: starting a session from the existing material, then dark scratch stamps, orange glints and matte metallic and smoothness passes">
+          <img src="media/28-burnt.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:22</span>
+        </a>
+        <figcaption>Dark stamps, orange glints, then the Metallic and Smooth passes. <span class="speed">2× speed</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="step" id="export-variant">
+      <div class="step-head"><span class="step-no">28</span><h2>Export the variant</h2></div>
+      <p class="why">Same export as before. Give it a new name so it doesn't overwrite the first barrel.</p>
+      <ol class="do">
+        <li><span class="ui">Export</span> tab, type a new <span class="ui">Name</span>. Mine is <b>QuickBarrelRoughedup</b>.</li>
+        <li><span class="ui ui--main">Export as prefab…</span>, same folder is fine, then <span class="ui">Delete Working Object (Undoable)</span>.</li>
+        <li>I skipped the collider this time. Do the <span class="ui">Colliders</span> step first if this one needs physics.</li>
+      </ol>
+      <figure class="clip">
+        <a class="clip-frame" href="media/29-export-variant.mp4" data-clip aria-label="Play clip: naming and exporting the burnt barrel">
+          <img src="media/29-export-variant.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:12</span>
+        </a>
+        <figcaption>New name, export, done. <span class="speed">real speed</span></figcaption>
+      </figure>
+      <figure class="clip">
+        <a class="clip-frame" href="media/30-both.mp4" data-clip aria-label="Play clip: both exported barrels side by side">
+          <img src="media/30-both.jpg" width="1080" height="714" loading="lazy" alt="">
+          <svg class="clip-play" viewBox="0 0 88 88" aria-hidden="true"><path d="M44 5 C66 4 83 20 83 43 C84 66 67 83 44 83 C21 84 5 67 5 44 C4 21 21 6 44 5 Z" fill="#fbf8ef" stroke="#22241f" stroke-width="3"/><path d="M36 29 L60 44 L36 59 Z" fill="#22241f" stroke="#22241f" stroke-width="3" stroke-linejoin="round"/></svg>
+          <span class="clip-time">0:09</span>
+        </a>
+        <figcaption>Two barrels from one model. <span class="speed">real speed</span></figcaption>
+      </figure>
+      <div class="pair">
+        <figure><img src="media/hero.jpg" width="940" height="840" loading="lazy" alt="The finished wooden barrel with metal hoops."><figcaption>the clean one</figcaption></figure>
+        <figure><img src="media/burnt.jpg" width="720" height="740" loading="lazy" alt="The burnt variant: lopsided, charred dark brown with orange glints."><figcaption>the one that's seen things</figcaption></figure>
+      </div>
+    </section>
+
+    <p class="part-head"><b>reference</b></p>
+
+    <section class="step" id="fixes">
+      <div class="step-head"><span class="step-no">29</span><h2>When something goes wrong</h2></div>
+      <p class="why">You'll misclick. I made a cube instead of a cylinder in the first ten seconds of this recording. These are the fixes I reach for most.</p>
+      <div class="cheat">
+        <dl>
+          <dt><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span> / <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Y</kbd></span></dt>
+          <dd>Undo and redo, for geometry, selections and paint.</dd>
+          <dt><kbd>Delete</kbd></dt>
+          <dd>Removes the selection. Selected edges or vertices take their faces with them.</dd>
+          <dt><kbd>Backspace</kbd></dt>
+          <dd>Dissolves: the edge or vertex goes but the surface stays.</dd>
+          <dt><span class="ui">Weld selected vertices</span></dt>
+          <dd>In <span class="ui">Whole mesh</span>. Two or more selected vertices merge into one, right in the middle.</dd>
+          <dt><span class="ui">Weld all</span></dt>
+          <dd>Merges any vertices closer than <span class="ui">Weld distance</span>. Keep that distance tiny.</dd>
+          <dt><span class="ui">Cap hole</span></dt>
+          <dd>In Edge mode, select one edge on an open border and the hole gets filled.</dd>
+          <dt><span class="ui">Undo stroke</span> · <span class="ui">End session</span></dt>
+          <dd>In the Paint footer. Ending a session keeps the look in the scene but doesn't save any files.</dd>
+        </dl>
+      </div>
+      <p style="margin-top:14px">With nothing selected, <kbd>Delete</kbd> and <kbd>Backspace</kbd> go to Unity as usual. The Model keys can be changed under <span class="ui">Shortcuts</span> → <span class="ui">Customize keys</span>.</p>
+    </section>
+
+    <section class="step" id="shortcuts">
+      <div class="step-head"><span class="step-no">30</span><h2>All the shortcuts</h2></div>
+      <p>The whole list in one place. Where it says Ctrl/Cmd, use <kbd>Cmd</kbd> on a Mac.</p>
+
+      <table class="ref">
+        <caption>anywhere</caption>
+        <tr><th><span class="combo"><kbd>Ctrl/Cmd</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>K</kbd></span></th><td>Open the Kelpo 3D Multitool window</td></tr>
+        <tr><th><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span> / <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Y</kbd></span></th><td>Undo / redo</td></tr>
+      </table>
+
+      <table class="ref">
+        <caption>model</caption>
+        <tr><th><kbd>1</kbd> / <kbd>2</kbd> / <kbd>3</kbd></th><td>Vertex / Edge / Face mode (mouse over the Scene view)</td></tr>
+        <tr><th><span class="combo"><kbd>Ctrl/Cmd</kbd><span class="plus">+</span><kbd>A</kbd></span></th><td>Select everything in the current mode</td></tr>
+        <tr><th><span class="combo"><kbd>Shift</kbd><span class="plus">+</span>click</span> / <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>click</span></th><td>Add to / remove from the selection</td></tr>
+        <tr><th>drag on empty space</th><td>Box select (anything the box crosses counts)</td></tr>
+        <tr><th><span class="combo"><kbd>Ctrl/Cmd</kbd><span class="plus">+</span>click</span> a mode</th><td>Convert the selection to that mode</td></tr>
+        <tr><th><kbd>L</kbd> / <span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>L</kbd></span></th><td>Select edge loop / ring</td></tr>
+        <tr><th><kbd>C</kbd> / <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>R</kbd></span></th><td>Connect selected vertices or edges / loop cut</td></tr>
+        <tr><th><kbd>Delete</kbd> / <kbd>Backspace</kbd></th><td>Delete the selection / dissolve it and keep the surface</td></tr>
+        <tr><th><kbd>W</kbd> / <kbd>E</kbd> / <kbd>R</kbd></th><td>Move / rotate / scale the selection</td></tr>
+        <tr><th><span class="combo"><kbd>Shift</kbd><span class="plus">+</span>drag</span> the gizmo</th><td>Extrude faces, or grow open border edges, in that motion</td></tr>
+      </table>
+      <p style="font-size:0.9rem; margin-top:6px">L, Shift+L, C, Ctrl+R, Delete and Backspace are defaults. Change them under <span class="ui">Shortcuts</span> → <span class="ui">Customize keys</span>.</p>
+
+      <table class="ref">
+        <caption>sculpt, retopo and paint</caption>
+        <tr><th><kbd>[</kbd> / <kbd>]</kbd></th><td>Brush smaller / bigger</td></tr>
+        <tr><th><span class="combo"><kbd>Shift</kbd><span class="plus">+</span>scroll</span></th><td>Brush size</td></tr>
+        <tr><th><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>scroll</span></th><td>Brush strength (Sculpt) or flow (Paint)</td></tr>
+        <tr><th>hold <kbd>Shift</kbd></th><td>Sculpt: quick Smooth with any brush</td></tr>
+        <tr><th>hold <kbd>Ctrl</kbd></th><td>Sculpt: invert the brush (Draw carves, Clay scrapes, Inflate deflates…)</td></tr>
+        <tr><th><span class="combo"><kbd>Shift</kbd><span class="plus">+</span>drag</span></th><td>Retopo: erase the protect mask. Paint: erase on an upper layer</td></tr>
+        <tr><th><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>click</span></th><td>Paint: eyedropper</td></tr>
+        <tr><th><kbd>Esc</kbd> or right-click</th><td>Paint: cancel a Line stroke</td></tr>
+      </table>
+
+      <table class="ref">
+        <caption>colliders (while drawing)</caption>
+        <tr><th><kbd>Backspace</kbd></th><td>Remove the last point</td></tr>
+        <tr><th><kbd>Esc</kbd></th><td>Stop adding points (press again to end)</td></tr>
+      </table>
+
+      <table class="ref">
+        <caption>unity's scene view</caption>
+        <tr><th><span class="combo"><kbd>Alt</kbd><span class="plus">+</span>drag</span></th><td>Orbit</td></tr>
+        <tr><th>middle-drag / scroll</th><td>Pan / zoom</td></tr>
+        <tr><th>right-drag</th><td>Look around</td></tr>
+        <tr><th><kbd>F</kbd></th><td>Frame the selected object</td></tr>
+        <tr><th><kbd>X</kbd> / <kbd>Z</kbd></th><td>Handle rotation Global/Local, handle position Pivot/Center</td></tr>
+        <tr><th><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>S</kbd></span></th><td>Save the scene</td></tr>
+      </table>
+    </section>
+
+    <section id="more">
+      <h2>
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+          <path d="M3 8 C7 6.5 11 6.5 15 9 V25 C11 22.5 7 22.5 3 24 Z M27 8 C23 6.5 19 6.5 15 9 V25 C19 22.5 23 22.5 27 24 Z" stroke="#5e7d63" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        more guides
+      </h2>
+      <div class="notebook next-guides">
+        <p class="heading">coming up</p>
+        <ol class="lessons">
+          <li>Getting started <span class="soon">you're here</span></li>
+          <li>Modeling <span class="soon">soon</span></li>
+          <li>Sculpting and remeshing <span class="soon">soon</span></li>
+          <li>UVs <span class="soon">soon</span></li>
+          <li>Painting <span class="soon">soon</span></li>
+          <li>Colliders and export <span class="soon">soon</span></li>
+        </ol>
+      </div>
+      <p class="lead" style="margin-top:22px">Stuck somewhere, or found a mistake in this guide? Write to <a href="mailto:kelpo.works@gmail.com">kelpo.works@gmail.com</a>. The full manual ships with the package too. The book button in the window opens it.</p>
+    </section>
+
+  </main>
+</div>
+
+<footer class="wrap">
+  <nav aria-label="Elsewhere">
+    <a href="../../">All tools</a>
+    <a href="../">3D Multitool</a>
+    <a href="https://www.youtube.com/@KelpoTools">YouTube</a>
+    <a href="https://assetstore.unity.com/publishers/153966">Asset Store</a>
+  </nav>
+  <p>© 2026 Kelpo · made in Finland</p>
+  <p class="mini">good enough to ship</p>
+</footer>
+
+</body>
+</html>
