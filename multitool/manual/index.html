@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual · Kelpo 3D Multitool</title>
+<meta name="description" content="The Kelpo 3D Multitool manual: installation, quick start, every tab from Model to Export, keyboard shortcuts, render pipelines, FAQ and known limitations.">
+<link rel="canonical" href="https://kelpoworks.github.io/multitool/manual/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Kelpo Tools">
+<meta property="og:title" content="Manual · Kelpo 3D Multitool">
+<meta property="og:description" content="Every tab, every option and every shortcut of Kelpo 3D Multitool, on one page.">
+<meta property="og:url" content="https://kelpoworks.github.io/multitool/manual/">
+<meta property="og:image" content="https://kelpoworks.github.io/img/og-multitool.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f6f1e1">
+<link rel="icon" type="image/png" href="../../img/favicon.png">
+<link rel="apple-touch-icon" href="../../img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/guide.css">
+<script src="../../js/guide.js" defer></script>
+</head>
+<body>
+
+<nav class="topbar wrap" aria-label="Site">
+  <a href="../../"><img src="../../img/kelpo-head.png" width="36" height="36" alt=""> Kelpo Tools</a>
+  <a href="https://assetstore.unity.com/packages/tools/modeling/kelpo-3d-multitool-398918">Asset Store
+    <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 12.5 L12 4 M6 3.5 h6.5 v6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</nav>
+
+<header class="guide-head wrap">
+  <p class="crumbs"><a href="../">3D Multitool</a> › <a href="../#learn">learn</a> › manual</p>
+  <h1>The manual</h1>
+  <svg class="squig" width="180" height="12" viewBox="0 0 180 12" fill="none" aria-hidden="true">
+    <path d="M2 8 C 20 2, 34 11, 52 6 S 86 2, 104 7 S 140 11, 178 4" stroke="#5e7d63" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+  <div class="guide-intro">
+    <div>
+      <p class="lead">Everything Kelpo 3D Multitool does, one tab at a time. Use the chapter list to jump around. The fine print sits behind the <b>more detail</b> folds, so you only open it when you need it.</p>
+      <p class="lead">New to the tool? The <a href="../getting-started/">Getting started</a> tutorial walks through a whole prop with clips. Keys look like <kbd>this</kbd> and buttons in the Kelpo window look like <span class="ui">this</span>.</p>
+      <ul class="chips">
+        <li>version 1.3.0</li>
+        <li>Unity 2022.3 LTS or newer</li>
+        <li>Built-in · URP · HDRP</li>
+        <li>also in the package as Markdown</li>
+      </ul>
+    </div>
+    <figure>
+      <span class="photo"><img src="media/hero.jpg" width="940" height="840" alt="A wooden barrel with metal hoops, modeled, painted and exported with Kelpo 3D Multitool."></span>
+      <figcaption>made start to finish in Unity</figcaption>
+    </figure>
+  </div>
+</header>
+
+<div class="guide">
+
+  <nav class="toc" aria-label="Chapters">
+    <details open>
+      <summary>chapters <span class="toc-now" data-toc-now></span></summary>
+      <ol>
+        <li class="toc-part">start here</li>
+        <li><a href="#install">Install</a></li>
+        <li><a href="#quick-start">Quick start</a></li>
+        <li><a href="#pipeline">How it fits together</a></li>
+        <li><a href="#window">The window</a></li>
+        <li class="toc-part">the tabs</li>
+        <li><a href="#model">Model</a></li>
+        <li><a href="#sculpt">Sculpt</a></li>
+        <li><a href="#retopo">Retopo</a></li>
+        <li><a href="#uvs">UVs</a></li>
+        <li><a href="#paint">Paint</a></li>
+        <li><a href="#colliders">Colliders</a></li>
+        <li><a href="#export">Export</a></li>
+        <li class="toc-part">reference</li>
+        <li><a href="#shortcuts">Keyboard shortcuts</a></li>
+        <li><a href="#pipelines">Render pipelines</a></li>
+        <li><a href="#samples">Demo scene and samples</a></li>
+        <li><a href="#faq">FAQ and troubleshooting</a></li>
+        <li><a href="#limits">Known limitations</a></li>
+        <li><a href="#developers">For developers</a></li>
+      </ol>
+    </details>
+  </nav>
+
+  <main class="guide-body">
+
+    <p class="part-head"><b>start here</b></p>
+
+    <section class="step" id="install">
+      <div class="step-head"><span class="step-no">1</span><h2>Install</h2></div>
+      <ol class="do">
+        <li>Import the package from the Asset Store (<span class="path">Window<i>›</i>Package Manager<i>›</i>My Assets</span>), or a <code>.unitypackage</code> through <span class="path">Assets<i>›</i>Import Package<i>›</i>Custom Package…</span></li>
+        <li>Everything lands in <code>Assets/Kelpo/3DMultitool/</code>. No other packages, no project settings to change. You can move the <code>Kelpo</code> folder anywhere under Assets.</li>
+        <li>Open the tool: <span class="path">Tools<i>›</i>Kelpo<i>›</i>3D Multitool<i>›</i>Open 3D Multitool</span>, or <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>K</kbd></span> (<span class="combo"><kbd>Cmd</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>K</kbd></span> on a Mac).</li>
+      </ol>
+      <div class="cheat">
+        <dl>
+          <dt>Change the open shortcut</dt>
+          <dd><span class="path">Edit<i>›</i>Shortcuts</span>, search for “Kelpo”.</dd>
+          <dt>Custom Model keys</dt>
+          <dd>Saved to <code>ProjectSettings/Kelpo3DMultitoolShortcuts.json</code>. Delete the file to get the defaults back.</dd>
+          <dt>Uninstall</dt>
+          <dd>Delete <code>Assets/Kelpo/3DMultitool/</code>. Everything you exported keeps working: meshes, textures, materials and prefabs are plain Unity assets.</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section class="step" id="quick-start">
+      <div class="step-head"><span class="step-no">2</span><h2>Quick start: a prop in ten minutes</h2></div>
+      <p class="why">The short version of the whole trip. The <a href="../getting-started/">Getting started</a> tutorial shows the same thing in detail, with clips.</p>
+      <ol class="do">
+        <li><b>Model.</b> Press <span class="ui">Cube</span>. You're in Face mode: click a face, press <kbd>W</kbd> and <span class="combo"><kbd>Shift</kbd><span class="plus">+</span>drag</span> the gizmo to extrude. <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> switch Vertex, Edge and Face mode. Block out a crate, a pillar, anything.</li>
+        <li><b>Sculpt</b> (optional). <span class="ui">Subdivide</span> once or twice, then Draw, Inflate or Flatten for organic detail. Hold <kbd>Shift</kbd> to smooth, <kbd>Ctrl</kbd> to carve.</li>
+        <li><b>Retopo</b> (optional, after heavy sculpting). Brush green over what matters, set <span class="ui">Keep %</span> to about 25, <span class="ui">Preview reduction</span>, then <span class="ui">Apply</span>.</li>
+        <li><b>UVs.</b> <span class="ui">Unique unwrap</span>.</li>
+        <li><b>Paint.</b> Resolution 1024, <span class="ui">Start painting</span>. In <span class="ui">Material</span> mode one stroke lays down color, metallic and smoothness. Try the <span class="ui">Image</span> tip for dirt, and bake ambient occlusion under <span class="ui">Maps &amp; bakes</span>.</li>
+        <li><b>Colliders.</b> <span class="ui">Generate collider</span>, or draw one.</li>
+        <li><b>Export.</b> Name it, <span class="ui">Export as prefab…</span>, pick a folder inside Assets. You get the mesh, PNG maps, material, collider and a prefab.</li>
+      </ol>
+    </section>
+
+    <section class="step" id="pipeline">
+      <div class="step-head"><span class="step-no">3</span><h2>How it fits together</h2></div>
+      <p class="why">The tabs run top to bottom in the order you'll usually use them, and each one feeds the next. You can jump around.</p>
+      <div class="cheat">
+        <dl>
+          <dt><span class="ui">Model</span></dt><dd>Block out the shape, or convert an imported mesh.</dd>
+          <dt><span class="ui">Sculpt</span></dt><dd>Organic detail: rocks, bark, cliffs. Subdivide as needed.</dd>
+          <dt><span class="ui">Retopo</span></dt><dd>Mark what to keep, then bring the triangle count down.</dd>
+          <dt><span class="ui">UVs</span></dt><dd>Unique unwrap for painting, or box projection for tiling materials.</dd>
+          <dt><span class="ui">Paint</span></dt><dd>Color, metallic, smoothness and height, in layers. Height becomes a normal map.</dd>
+          <dt><span class="ui">Colliders</span></dt><dd>Draw a collider or generate a simplified one.</dd>
+          <dt><span class="ui">Export</span></dt><dd>Mesh, PNG maps, material and prefab in one go.</dd>
+        </dl>
+      </div>
+      <aside class="note note--guide">
+        <h3>Finish the shape before you unwrap and paint</h3>
+        <p>Moving vertices and sculpting keep the UVs. Anything that adds, deletes, splits, welds, remeshes or reorders faces makes new corners the old texture never covered, so those edits need a new unwrap.</p>
+        <p>Two exceptions keep UVs: <span class="ui">Detach</span> for complete loose parts, and <span class="ui">Duplicate</span> with <b>Keep UVs</b>. With Keep UVs, the copies share the same texture pixels.</p>
+      </aside>
+      <h3>Two ways to texture</h3>
+      <div class="later">
+        <article>
+          <h3>Painted, one of a kind</h3>
+          <p>Hero rocks, stumps, props. <span class="ui">Unique unwrap</span> → <span class="ui">Paint</span> → <span class="ui">Export</span>.</p>
+        </article>
+        <article>
+          <h3>Tiling material</h3>
+          <p>Modular walls, cliffs sharing one rock texture. <span class="ui">Box project</span> with world space on → assign your material → <span class="ui">Export</span>.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="step" id="window">
+      <div class="step-head"><span class="step-no">4</span><h2>The window</h2></div>
+      <figure class="tour">
+        <a class="tour-shot" href="media/window.jpg">
+          <img src="media/window.jpg" width="686" height="890" loading="lazy" alt="The Kelpo 3D Multitool window on the Model tab, with numbered spots on its parts.">
+          <span class="spot" style="left:68.5%; top:12%" aria-hidden="true">1</span>
+          <span class="spot" style="left:64.1%; top:21.3%" aria-hidden="true">2</span>
+          <span class="spot" style="left:0.8%; top:33.7%" aria-hidden="true">3</span>
+          <span class="spot" style="left:0.8%; top:52.6%" aria-hidden="true">4</span>
+          <span class="spot" style="left:0.8%; top:83.5%" aria-hidden="true">5</span>
+          <span class="spot" style="left:43.7%; top:97.6%" aria-hidden="true">6</span>
+          <span class="spot" style="left:95.2%; top:78.7%" aria-hidden="true">7</span>
+        </a>
+        <figcaption>
+          <ol class="tour-legend">
+            <li><b>Header.</b> <span class="ui">?</span> turns routine hints on and off (warnings always stay). The book button opens this manual in the Project window.</li>
+            <li><b>Object card.</b> The selected object and its state: type, UVs, material, whether paint is saved. Its <span class="ui">⋯</span> menu holds extra options.</li>
+            <li><b>Cards.</b> Related controls are grouped. A folded card shows a summary of its values. One blue button marks the main action of the screen.</li>
+            <li><b>Tools.</b> They follow the current mode and task.</li>
+            <li><b>Folded extras</b> for things you need less often.</li>
+            <li><b>Footer.</b> Selection or triangle count and a <span class="ui">Next</span> link. In Paint it holds <span class="ui">Undo stroke</span>, <span class="ui">End session</span> and <span class="ui">Save material + textures…</span>.</li>
+            <li><b>The rail.</b> The seven tabs in order. Narrow windows show icons with tooltips. An amber dot on Paint means layers aren't saved yet.</li>
+          </ol>
+        </figcaption>
+      </figure>
+      <p>Drag a slider's label to scrub its value, or type into the field next to it. A row of choices that doesn't fit a narrow window turns into a dropdown. Very wide windows keep the controls in a centered column.</p>
+      <details class="more">
+        <summary>more detail: Scene-view panels while painting</summary>
+        <p>During a paint session, open the <span class="ui">⋯</span> menu on the object card and turn on <b>Scene-view overlays</b>. You get movable, dockable Brush, Paint session and Shortcuts panels in the Scene view. They edit the same settings as the window. They hide when you change tabs or selection, or enter Play Mode, and they're editor-only: nothing is added to your game.</p>
+      </details>
+    </section>
+
+    <p class="part-head"><b>the tabs</b></p>
+
+    <section class="step" id="model">
+      <div class="step-head"><span class="step-no">5</span><h2>Model</h2></div>
+      <p class="why">Polygon modeling on a Kelpo Object: a component that holds the editable mesh and keeps the MeshFilter in sync.</p>
+
+      <h3>Create</h3>
+      <ul class="plain">
+        <li><span class="ui">Cube</span>, <span class="ui">Plane</span>, <span class="ui">Sphere</span> (an icosphere) and <span class="ui">Cylinder</span> use standard sizes: cube 1 segment per axis, plane 4×4, sphere 2 subdivisions, cylinder 16 sides and 1 height segment.</li>
+        <li><span class="ui">Custom</span> sets size and segments first. Cylinders take sides and height segments, spheres take subdivision levels. The settings stay for the window session, and <span class="ui">Reset</span> restores the defaults.</li>
+        <li><span class="ui">Placement</span>: <span class="ui">Scene View Focus</span> (where you're looking) or <span class="ui">World Origin</span> (exactly 0, 0, 0).</li>
+        <li><span class="ui">Convert selection</span> makes any imported MeshFilter editable. Material slots carry over. Keep <span class="ui">Preserve existing UV mapping and textures</span> on if its current textures must keep working.</li>
+      </ul>
+      <figure class="shot">
+        <a href="media/custom.jpg"><img src="media/custom.jpg" width="584" height="400" loading="lazy" alt="The Custom panel: Shape Cube, Plane, Sphere or Cylinder, Size X Y Z, Segments X Y Z, a Create button and Reset."></a>
+      </figure>
+      <figure class="shot">
+        <a href="media/convert.jpg"><img src="media/convert.jpg" width="440" height="262" loading="lazy" alt="The Or convert an existing mesh card: the selected mesh can be made editable here, material slots are kept, Preserve existing UV mapping and textures ticked, and the Convert selection button."></a>
+        <figcaption>Select any mesh in the scene and this card appears under the primitives.</figcaption>
+      </figure>
+      <h3>Add parts to the same object</h3>
+      <p>With an object selected, press <span class="ui">+ New</span> and tick <span class="ui">Add to … as a part</span>. The new shape goes into the same object as a loose part, on a material slot you choose, and it comes in selected. Build every part before unwrapping: adding parts is switched off once the object has UVs, to protect the textures.</p>
+      <figure class="shot">
+        <a href="media/new-part.jpg"><img src="media/new-part.jpg" width="610" height="296" loading="lazy" alt="The New mesh or part card with Add to Cylinder as a part ticked and the Material slot dropdown."></a>
+      </figure>
+
+      <h3>Select</h3>
+      <div class="cheat">
+        <dl>
+          <dt><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></dt><dd>Vertex, Edge and Face mode (mouse over the Scene view), or the bar at the top of the selection card. Switching mode starts a fresh selection.</dd>
+          <dt><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>click</span> a mode</dt><dd>Converts the selection instead: faces become their corners or edges, vertices become the edges or faces around them.</dd>
+          <dt>click · <span class="combo"><kbd>Shift</kbd><span class="plus">+</span>click</span> · <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>click</span></dt><dd>Select, add, remove. Faces pick anywhere on their surface. Vertices and edges pick near the cursor.</dd>
+          <dt>drag on empty space</dt><dd>Box select. Anything the box crosses counts, so a thin box catches a whole row of edges.</dd>
+          <dt><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>A</kbd></span></dt><dd>Everything in the current mode, on this mesh only.</dd>
+          <dt><span class="ui">Grow</span> <span class="ui">Shrink</span> <span class="ui">Linked</span></dt><dd>One ring more, one ring less, or the whole connected piece.</dd>
+          <dt><span class="ui">Loop</span> <kbd>L</kbd> · <span class="ui">Ring</span> <span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>L</kbd></span></dt><dd>Extend an edge selection around the loop or across the ring. On a hole or outer border, Loop follows just that border.</dd>
+          <dt><span class="ui">Skip backfaces</span></dt><dd>Clicks, hover and box ignore sides facing away from you.</dd>
+          <dt><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span> <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Y</kbd></span></dt><dd>Selections are undoable, so an accidental empty click can be taken back.</dd>
+        </dl>
+      </div>
+      <figure class="shot">
+        <a href="media/edge-tools.jpg"><img src="media/edge-tools.jpg" width="590" height="436" loading="lazy" alt="The selection card (Vertex, Edge, Face, Grow, Shrink, Linked, Skip backfaces, Gizmo, Mirror) above the Edge tools: Loop, Ring, Connect, Loop cut, Insert vertex, Dissolve, Delete faces and Cap hole."></a>
+        <figcaption>The selection card stays in view while the tools below it scroll.</figcaption>
+      </figure>
+
+      <h3>Move, extrude, inset</h3>
+      <ul class="plain">
+        <li><kbd>W</kbd> <kbd>E</kbd> <kbd>R</kbd>: Unity's own move, rotate and scale work on your selection. Unity's object gizmo steps aside while elements are selected. <span class="ui">Gizmo</span> hides Kelpo's.</li>
+        <li><b><span class="combo"><kbd>Shift</kbd><span class="plus">+</span>drag</span> the gizmo extrudes.</b> Faces grow walls first, open border edges grow new faces, and the fresh part then follows the move, rotate or scale.</li>
+        <li><span class="ui">Extrude</span> works on a whole region: only its outer border grows walls. A negative distance makes a recess.</li>
+        <li><span class="ui">Inset</span> shrinks faces inward and adds a border. <span class="ui">Each face on its own</span> insets every face separately.</li>
+      </ul>
+
+      <h3>Edge and vertex tools</h3>
+      <div class="cheat">
+        <dl>
+          <dt><span class="ui">Loop cut</span> <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>R</kbd></span></dt><dd>Slices a new loop through the ring of quads. It stays selected so you can slide it with <kbd>W</kbd> right away.</dd>
+          <dt><span class="ui">Connect</span> <kbd>C</kbd></dt><dd>Two vertices on the same face get an edge between them. Selected edges get split at their midpoints and joined across their faces.</dd>
+          <dt><span class="ui">Insert vertex</span></dt><dd>Splits edges at their midpoints and hands you the new vertices. Insert on two edges, then Connect, to cut a face exactly where you want.</dd>
+          <dt><span class="ui">Cap hole</span></dt><dd>Pick one edge on an open border. The whole hole gets filled with one face.</dd>
+          <dt><span class="ui">Delete</span> <kbd>Delete</kbd></dt><dd>Removes the selection, along with the faces it touches.</dd>
+          <dt><span class="ui">Dissolve</span> <kbd>Backspace</kbd></dt><dd>Removes structure but keeps the surface. A dissolved edge merges two faces into one, the opposite of Connect.</dd>
+        </dl>
+      </div>
+      <p>With nothing selected, <kbd>Delete</kbd> and <kbd>Backspace</kbd> go to Unity as usual. All Model keys can be changed under <span class="ui">Shortcuts</span> → <span class="ui">Customize keys</span>.</p>
+
+      <h3>Face tools</h3>
+      <figure class="shot">
+        <a href="media/face-tools.jpg"><img src="media/face-tools.jpg" width="590" height="246" loading="lazy" alt="The Face tools card: Extrude, Inset with Each face on its own, and Duplicate, Detach and Delete."></a>
+      </figure>
+      <div class="cheat">
+        <dl>
+          <dt><span class="ui">Duplicate</span></dt><dd>Copies the selected faces as a loose part of the same object, selected for moving. On an unwrapped object you choose <b>Keep UVs</b> (the copy shares the painted pixels) or <b>Clear UVs</b> and unwrap again.</dd>
+          <dt><span class="ui">Detach</span></dt><dd>Moves a complete loose part (select it with <span class="ui">Linked</span>) into its own object. Same transform, UVs and materials. Handy for a lid that needs its own hinge.</dd>
+          <dt><span class="ui">Delete</span></dt><dd>Removes the faces.</dd>
+        </dl>
+      </div>
+
+      <h3>Mirror</h3>
+      <p>Pick <span class="ui">X</span>, <span class="ui">Y</span> or <span class="ui">Z</span> and model one half. The other half follows live, welded at the seam. The sliders button next to it opens the settings:</p>
+      <div class="cheat">
+        <dl>
+          <dt><span class="ui">Plane offset</span></dt><dd>Type an exact position, or use <span class="ui">Place at</span> <span class="ui">Selection</span>, <span class="ui">Bounds</span> or <span class="ui">Pivot</span>.</dd>
+          <dt><span class="ui">Clip at plane</span></dt><dd>Keeps vertices that cross the seam on it.</dd>
+          <dt><span class="ui">Keep half</span></dt><dd>Cuts a whole mesh at the plane and keeps the − or + side.</dd>
+          <dt><span class="ui ui--main">Apply mirror</span></dt><dd>Bakes the mirrored half for real. Later tabs wait until you do.</dd>
+        </dl>
+      </div>
+      <figure class="shot">
+        <a href="media/mirror.jpg"><img src="media/mirror.jpg" width="610" height="630" loading="lazy" alt="Mirror set to X with the Mirror settings open: Plane offset, Place at Selection, Bounds or Pivot, Keep half, Clip at plane and Apply mirror. The object card shows a Mirror X live chip."></a>
+        <figcaption>The mirrored half is for display only, so you can't click it. Edit the real half.</figcaption>
+      </figure>
+
+      <h3>Whole mesh</h3>
+      <div class="cheat">
+        <dl>
+          <dt><span class="ui">Shading</span></dt><dd><span class="ui">Flat</span> makes every edge hard, <span class="ui">Smooth</span> every edge soft. <span class="ui">Auto</span> keeps edges hard where faces meet at more than <span class="ui">Smoothing angle</span>.</dd>
+          <dt><span class="ui">Weld selected vertices</span></dt><dd>Merges two or more selected vertices at their average position, however far apart they are.</dd>
+          <dt><span class="ui">Weld all</span></dt><dd>Merges any vertices closer than <span class="ui">Weld distance</span>. A cleanup pass.</dd>
+          <dt><span class="ui">Flip normals</span></dt><dd>Turns the selected faces, or the whole mesh, inside out. Handy for rooms.</dd>
+          <dt><span class="ui">Center pivot</span></dt><dd>Moves the pivot to the middle of the mesh.</dd>
+          <dt><span class="ui">Save mesh as asset…</span></dt><dd>Writes the current mesh to your project.</dd>
+        </dl>
+      </div>
+      <figure class="shot">
+        <a href="media/whole-mesh.jpg"><img src="media/whole-mesh.jpg" width="590" height="224" loading="lazy" alt="The Whole mesh card: Shading Flat, Auto or Smooth, Smoothing angle, Center pivot, Flip normals, Weld distance with Weld all, and Save mesh as asset."></a>
+      </figure>
+
+      <h3>Simplify selection</h3>
+      <p>Thin out part of a mesh, for example after Refine or heavy sculpting. Select the faces in Face mode, open <span class="ui">Simplify selection</span>, set <span class="ui">Keep triangles</span> and <span class="ui">Feature angle</span>, then <span class="ui">Preview simplification</span> and <span class="ui">Apply</span> or <span class="ui">Cancel</span>. The border of the selection stays put. Lower feature angles protect more creases. Do it before unwrapping.</p>
+
+      <details class="more">
+        <summary>more detail: imported meshes and shading</summary>
+        <p>Converting reconnects vertices that Unity split only for hard edges, and keeps submeshes and material slots. The imported normals are kept, so the original shading survives conversion and painting. Moving vertices recalculates normals inside those original hard-edge borders. Picking <span class="ui">Flat</span>, <span class="ui">Auto</span> or <span class="ui">Smooth</span> replaces the imported shading (undoable). Unity stores normals rather than smoothing-group numbers, so Kelpo keeps the hard-edge borders, not numbered groups.</p>
+        <p>Kelpo stores UVs per face corner. UV seams don't turn into loose edges when you model or sculpt.</p>
+        <p>Faces are true n-gons with concave-safe triangulation, so odd-shaped faces render, pick and export correctly.</p>
+      </details>
+    </section>
+
+    <section class="step" id="sculpt">
+      <div class="step-head"><span class="step-no">6</span><h2>Sculpt</h2></div>
+      <p class="why">Light, organic sculpting tuned for game props: rocks, roots, bark, dents.</p>
+      <figure class="shot">
+        <a href="media/sculpt.jpg"><img src="media/sculpt.jpg" width="440" height="524" loading="lazy" alt="The Sculpt brush card: Build Draw, Clay, Inflate; Form Grab, Pinch, Crease; Finish Smooth, Flatten, Refine; then Radius, Strength, Hardness, Direction, Symmetry and options."></a>
+        <figcaption>The strip under the brushes shows what <kbd>Ctrl</kbd> and <kbd>Shift</kbd> do with the chosen one.</figcaption>
+      </figure>
+      <div class="cheat">
+        <dl>
+          <dt><span class="ui">Draw</span></dt><dd>A soft bump along the brush direction. <kbd>Ctrl</kbd> carves.</dd>
+          <dt><span class="ui">Clay</span></dt><dd>Builds even, stackable layers. <kbd>Ctrl</kbd> scrapes the high spots flat.</dd>
+          <dt><span class="ui">Inflate</span></dt><dd>Pushes along each vertex's own normal. <kbd>Ctrl</kbd> deflates.</dd>
+          <dt><span class="ui">Grab</span></dt><dd>Picks up the surface and drags it, even when the cursor leaves the mesh.</dd>
+          <dt><span class="ui">Pinch</span></dt><dd>Pulls toward the brush center. <kbd>Ctrl</kbd> spreads.</dd>
+          <dt><span class="ui">Crease</span></dt><dd>Cuts a sharp groove for folds and cracks. <kbd>Ctrl</kbd> raises a sharp ridge.</dd>
+          <dt><span class="ui">Smooth</span></dt><dd>Relaxes the surface without shrinking it.</dd>
+          <dt><span class="ui">Flatten</span></dt><dd>Presses toward the average plane under the brush.</dd>
+          <dt><span class="ui">Refine</span></dt><dd>Adds triangles only under the brush. Densify a thin branch, then Grab it.</dd>
+        </dl>
+      </div>
+      <p><b>Hold <kbd>Shift</kbd></b> at the start of a stroke to smooth with any brush. <b>Hold <kbd>Ctrl</kbd></b> to invert the brushes that have a direction. <kbd>[</kbd> <kbd>]</kbd> or <span class="combo"><kbd>Shift</kbd><span class="plus">+</span>scroll</span> change the size, <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>scroll</span> the strength.</p>
+      <h3>Settings worth knowing</h3>
+      <div class="cheat">
+        <dl>
+          <dt><span class="ui">Radius</span> <span class="ui">Strength</span> <span class="ui">Hardness</span></dt><dd>Displacement scales with the radius: small brushes for small detail, big ones for big forms. Hardness widens the full-strength center.</dd>
+          <dt><span class="ui">Direction</span></dt><dd><span class="ui">Area Average</span> (steady, the default), <span class="ui">Hit Normal</span>, or each vertex's own normal for Draw. <span class="ui">Lock direction for the stroke</span> keeps the first direction, good for flat cuts.</dd>
+          <dt><span class="ui">Front-facing surface only</span></dt><dd>Stops the brush pushing through thin props to the far side.</dd>
+          <dt><span class="ui">Symmetry</span></dt><dd>Mirrors every stroke on X, Y or Z, in local or world space. A ghost cursor shows the mirrored dab.</dd>
+          <dt><span class="ui">Stroke</span> fold</dt><dd><span class="ui">Spacing</span>, <span class="ui">Stabilize</span> (the brush trails the cursor for steadier lines), <span class="ui">Auto-smooth</span> and pen pressure.</dd>
+          <dt><span class="ui">Detail</span> fold</dt><dd><span class="ui">Subdivide</span> (×4 triangles, capped by <span class="ui">Triangle cap</span>), <span class="ui">Refine levels</span> and <span class="ui">Adaptive remesh</span> to even out stretched areas mid-sculpt.</dd>
+        </dl>
+      </div>
+      <div class="later">
+        <article>
+          <h3>Recipe: a rock</h3>
+          <p><span class="ui">Cube</span> → <span class="ui">Subdivide</span> 2–3 times → <span class="ui">Inflate</span> to round it → <span class="ui">Clay</span> or <span class="ui">Draw</span> and <span class="ui">Flatten</span> for facets → a little <span class="ui">Smooth</span>.</p>
+        </article>
+        <article>
+          <h3>Recipe: cracks</h3>
+          <p><span class="ui">Crease</span> with a small radius and a bit of <span class="ui">Stabilize</span>. <kbd>Ctrl</kbd> + Crease for ridges, a touch of <span class="ui">Auto-smooth</span> on coarse meshes.</p>
+        </article>
+      </div>
+      <details class="more">
+        <summary>more detail</summary>
+        <p>Dabs are placed along the surface between mouse events, so fast strokes stay continuous. Flatten and Clay measure their plane from the area under the brush, not the single point under the cursor. <span class="ui">Preserve creases and recess walls</span> (on by default for Smooth, Flatten and Clay) keeps strokes inside a recess off its walls. Turn it off to round over a corner on purpose.</p>
+        <p>Unity's object gizmo is hidden while you sculpt so it can't steal a stroke. Untick <span class="ui">Hide the object gizmo while sculpting</span> to move the object. Sculpting keeps quads, UVs and saved paint areas, and never touches your own colliders.</p>
+      </details>
+    </section>
+
+    <section class="step" id="retopo">
+      <div class="step-head"><span class="step-no">7</span><h2>Retopo</h2></div>
+      <p class="why">The smart optimize step: bring the triangle count down while protecting what defines the shape.</p>
+      <figure class="shot">
+        <a href="media/retopo.jpg"><img src="media/retopo.jpg" width="590" height="556" loading="lazy" alt="The Retopo tab: the Protect card with Brush radius, Brush strength, Protect sharp edges, Edge angle and Clear mask, and the Optimize card with Method Reduce or Remesh, Keep percent, Mask strength, the expected result and Preview reduction."></a>
+      </figure>
+      <ol class="do">
+        <li><b>Protect.</b> Brush green dots over silhouettes and features that matter. <span class="combo"><kbd>Shift</kbd><span class="plus">+</span>drag</span> erases, <span class="ui">Clear mask</span> starts over. <span class="ui">Protect sharp edges</span> (on by default) locks outlines and edges at or above <span class="ui">Edge angle</span>.</li>
+        <li><b>Reduce.</b> <span class="ui">Method</span> <span class="ui">Reduce</span> keeps the surface and removes triangles. <span class="ui">Keep %</span> is the budget, <span class="ui">Mask strength</span> how hard the green areas resist. The result row shows the expected count.</li>
+        <li><b>Preview.</b> <span class="ui">Preview reduction</span> shows a proposal. Flip between <span class="ui">Original</span> and <span class="ui">Result</span>, read the real counts, then <span class="ui">Apply</span> or <span class="ui">Cancel</span>. <span class="ui">Revert</span> undoes the last Apply.</li>
+        <li><b>Or remesh.</b> <span class="ui">Method</span> <span class="ui">Remesh</span> rebuilds all topology to <span class="ui">Detail size</span>, then gives triangles back on flat areas (<span class="ui">Adaptivity</span>). Same Preview, Apply and Revert.</li>
+        <li><b>Keep a copy.</b> <span class="ui">Save mesh as asset…</span>.</li>
+      </ol>
+      <p>The mask survives each reduction, so you can apply several times. If sharp-edge protection stops above your target count, Kelpo says so: raise the angle, turn it off, or paint a narrower mask.</p>
+    </section>
+
+    <section class="step" id="uvs">
+      <div class="step-head"><span class="step-no">8</span><h2>UVs</h2></div>
+      <p class="why">Painting needs every face to have its own patch of texture. Tiling materials need UVs that repeat.</p>
+      <div class="cheat">
+        <dl>
+          <dt><span class="ui ui--main">Unique unwrap</span></dt><dd>Non-overlapping islands, ready for the Paint tab.</dd>
+          <dt><span class="ui">Box project</span></dt><dd>Box or triplanar UVs for tiling materials you assign yourself. <span class="ui">Tile size</span> is in world units, and <span class="ui">Project in world space</span> lets the texture continue across modular pieces.</dd>
+        </dl>
+      </div>
+      <figure class="shot">
+        <a href="media/uv-layout.jpg"><img src="media/uv-layout.jpg" width="610" height="404" loading="lazy" alt="The Layout card after unwrapping: island preview, Islands 25, Coverage 36% of 0 to 1, Density about 222 texels per meter, Checker and Seams buttons, and Paint-ready: no overlaps, everything inside 0 to 1."></a>
+      </figure>
+      <p>The <span class="ui">Layout</span> card at the top previews the islands (overlaps in red) and shows island count, coverage and texel density. It warns about <b>overlapping UVs</b>, where paint would land on several surfaces, and <b>vertices outside 0–1</b>, fine for tiling but not for painting. <span class="ui">Checker</span> puts a test pattern on the mesh for a moment, <span class="ui">Seams</span> draws the cuts in the Scene view.</p>
+      <p>Both work on several selected objects at once, imported and skinned meshes included. Each object gets its own layout; they aren't packed into one atlas. For shared texture space, build the pieces as parts of one Kelpo object, unwrap together, then <span class="ui">Detach</span>.</p>
+      <details class="more">
+        <summary>more detail</summary>
+        <p>On Kelpo objects both keep the editable faces, edge loops, loose parts, material slots, protect mask and saved paint areas. The mapping saves with the object and survives position edits, undo and scene reloads. Box project also keeps submeshes, skin weights, blendshapes, vertex colors and extra UV channels. A model that already has good UV0 can be painted without unwrapping.</p>
+      </details>
+    </section>
+
+    <section class="step" id="paint">
+      <div class="step-head"><span class="step-no">9</span><h2>Paint</h2></div>
+      <p class="why">Paint color, metal, shine and height straight onto the mesh in the Scene view, in layers. Standard metallic workflow.</p>
+
+      <h3>Start a session</h3>
+      <figure class="shot">
+        <a href="media/paint-start.jpg"><img src="media/paint-start.jpg" width="610" height="434" loading="lazy" alt="The Paint start screen: Continue with a Session file field, New session with Resolution 256 to 2048, a memory note, Start from the existing material and maps, and Start painting."></a>
+      </figure>
+      <ul class="plain">
+        <li>Pick a <span class="ui">Resolution</span>. 2048 is the maximum, 1024 uses far less memory. On objects with several materials, choose the <span class="ui">Paint slot</span>.</li>
+        <li><span class="ui">Start from the existing material and maps</span> brings the current look in as the Base layer. Turn it off for a blank Kelpo material.</li>
+        <li><span class="ui">Continue</span> offers earlier work first: a session file, a recovery checkpoint, or the maps on the material.</li>
+        <li>Closing the window doesn't end the session. Reopen it, select the object and keep going.</li>
+      </ul>
+
+      <h3>Channels and the brush</h3>
+      <figure class="shot">
+        <a href="media/brush.jpg"><img src="media/brush.jpg" width="590" height="568" loading="lazy" alt="The Channel card (Material, Albedo, Metallic, Smooth, Height; Color, Metallic, Smoothness) and the Brush card (Start from Soft, Detail, Tile, Wear; My brushes; Tip Round, Square, Organic, Image; Freehand or Line; Radius, Hardness, Flow, Spacing)."></a>
+      </figure>
+      <div class="cheat">
+        <dl>
+          <dt><span class="ui">Material</span></dt><dd>The simple path: pick a color, how metallic and how smooth, and one stroke lays down all three.</dd>
+          <dt><span class="ui">Albedo</span> <span class="ui">Metallic</span> <span class="ui">Smooth</span></dt><dd>One map at a time, for fine control.</dd>
+          <dt><span class="ui">Height</span></dt><dd>Bumps without touching the mesh. 0.5 is neutral, lower carves, higher raises. It turns into a normal map as you paint.</dd>
+          <dt><span class="ui">Start from</span></dt><dd>Quick starting brushes: <span class="ui">Soft</span>, <span class="ui">Detail</span>, <span class="ui">Tile</span>, <span class="ui">Wear</span>.</dd>
+          <dt><span class="ui">Tip</span></dt><dd><span class="ui">Round</span>, <span class="ui">Square</span> for tiles and trim, <span class="ui">Organic</span> with grain and variation, or <span class="ui">Image</span> for stamps.</dd>
+          <dt><span class="ui">Freehand</span> · <span class="ui">Line</span></dt><dd>Line: click, drag a straight guide and release to paint it as one undo step. <kbd>Esc</kbd> or right-click cancels.</dd>
+          <dt><span class="ui">Radius</span> <span class="ui">Hardness</span> <span class="ui">Flow</span> <span class="ui">Spacing</span></dt><dd>Radius is in world units, so it feels the same at any resolution. Flow is how much each dab lays down. <span class="ui">More</span> holds pen pressure.</dd>
+          <dt><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>click</span></dt><dd>Eyedropper. Reads the texture values, not the lit pixel. In Material mode it picks all three at once.</dd>
+        </dl>
+      </div>
+
+      <h3>Image stamps</h3>
+      <p><span class="ui">Tip</span> → <span class="ui">Image</span> and assign any Texture2D. <span class="ui">Color</span>: <span class="ui">Multiply with image</span> or <span class="ui">Brush color only</span>. <span class="ui">Shape from</span>: <span class="ui">Alpha</span> for transparent PNGs, <span class="ui">Brightness</span> or <span class="ui">Darkness</span> for plain light or dark images. <span class="ui">Rotation</span> and <span class="ui">Random rotation per dab</span> turn the stamp. On the Height channel, the image's brightness becomes the relief.</p>
+      <figure class="shot">
+        <a href="media/image-tip.jpg"><img src="media/image-tip.jpg" width="600" height="430" loading="lazy" alt="The Brush card with Tip set to Image, an image assigned, Color Multiply with image, Shape from Alpha, Rotation and Random rotation per dab."></a>
+      </figure>
+
+      <h3>Brush presets</h3>
+      <p>Click <span class="ui">+</span> next to <span class="ui">My brushes</span>, name it, <span class="ui">Save</span>. Pick it from the dropdown later. <span class="ui">Update</span> overwrites it, <span class="ui">Load</span> brings it back after experimenting, <span class="ui">Delete</span> and <span class="ui">Clear all</span> remove presets. A preset stores the channel and material values, tip, hardness, flow, spacing, stamp and the Height limit. It doesn't store layers, textures or the face limit. Presets live in your editor settings, outside Assets, so test presets never end up in a package.</p>
+
+      <h3>Layers</h3>
+      <figure class="shot">
+        <a href="media/layers.jpg"><img src="media/layers.jpg" width="584" height="372" loading="lazy" alt="The Layers card with six layers, each with a painting circle, an eye, a name, an opacity slider and a Height mask button; Base at the bottom is always visible."></a>
+      </figure>
+      <ul class="plain">
+        <li>Up to 8 layers. <span class="ui">+</span> adds an <span class="ui">Empty layer</span> or a <span class="ui">Carved material preset</span>.</li>
+        <li>The circle picks the layer you paint on. Click a name to rename it, the eye to hide it, and drag the slider for opacity.</li>
+        <li><span class="combo"><kbd>Shift</kbd><span class="plus">+</span>drag</span> erases on an upper layer to show the ones below. Base can't be erased.</li>
+        <li><span class="ui">Fill layer</span> fills the whole layer with the current values. Good for base coats.</li>
+        <li>Every layer change is undoable, a deleted layer included.</li>
+      </ul>
+
+      <h3>Height masks on layers</h3>
+      <p>A layer can show only where the painted Height says so. Click its <span class="ui">Height mask</span> button and choose <span class="ui">Carved</span> (below neutral), <span class="ui">Raised</span> (above), <span class="ui">Edges</span> (convex rims) or <span class="ui">Cavities</span> (folds). Tune <span class="ui">Depth</span> or <span class="ui">Curvature</span> and <span class="ui">Softness</span>. <span class="ui">Preview</span> shows the allowed area in orange. <span class="ui">Everywhere</span> removes the condition. The layer keeps following later Height painting and undo.</p>
+      <aside class="note note--guide">
+        <h3>Recipe: chipped metal</h3>
+        <p>Fill Base with a bright, metallic, smooth material. Set the brush to a darker, duller one and choose <span class="ui">+</span> → <span class="ui">Carved material preset</span>. Now paint <span class="ui">Height</span> below 0.5 (about 0.25): wherever you carve, the dull layer shows through as chips. Undo a Height stroke and the chip goes with it.</p>
+      </aside>
+
+      <h3>Paint only on</h3>
+      <figure class="shot">
+        <a href="media/paint-area.jpg"><img src="media/paint-area.jpg" width="594" height="260" loading="lazy" alt="The Paint only on card: Faces set to a selection of 160 faces, Pick in Scene, Tint the protected faces, Height channel Everywhere, Limits new strokes and Clear limits."></a>
+      </figure>
+      <div class="cheat">
+        <dl>
+          <dt><span class="ui">Faces</span></dt><dd><span class="ui">All faces</span>, <span class="ui">Use Model selection</span> or a saved area. <span class="ui">Pick in Scene</span> takes you to Model to choose faces, then <span class="ui">Return to Paint</span>. <span class="ui">Tint the protected faces</span> shows what's off-limits (the tint hides during a stroke).</dd>
+          <dt><span class="ui">Height channel</span></dt><dd>Limits dabs to <span class="ui">Carved</span>, <span class="ui">Raised</span>, <span class="ui">Edges</span> or <span class="ui">Cavities</span>, with its own threshold, softness and <span class="ui">Preview</span>. Unlike a layer mask, it only affects new strokes.</dd>
+          <dt><span class="ui">Clear limits</span></dt><dd>Back to all faces and everywhere. Saved areas and layer masks stay.</dd>
+        </dl>
+      </div>
+      <figure class="shot">
+        <a href="media/mask.jpg"><img src="media/mask.jpg" width="584" height="408" loading="lazy" alt="The Paint only on card with Height channel set to Cavities and Preview on, Curvature and Softness sliders, and a Previewing the brush Height limit badge."></a>
+      </figure>
+      <p>Both limits work together: a dab has to pass both. <span class="ui">Fill layer</span> is off while a face limit is on. The face limit is for this session only. To reuse an area, capture it and choose <span class="ui">Faces</span> → <span class="ui">Save current / manage areas…</span>. Saved areas are stored with the object, so save the scene.</p>
+
+      <h3>Normal map and ambient occlusion</h3>
+      <ul class="plain">
+        <li><b>Normal map.</b> Built from Height as you paint. Its strength sits under <span class="ui">Maps &amp; bakes</span> → <span class="ui">Normal map</span>. <span class="ui">Generate</span> rebuilds it, <span class="ui">Clear</span> removes it. Erasing Height erases the relief too.</li>
+        <li><b>Ambient occlusion.</b> <span class="ui">Maps &amp; bakes</span> → resolution, samples, <span class="ui">Reach</span> and strength, then <span class="ui">Bake</span>. Bake at 256 while trying things and 512 for the final. It's the biggest single “looks finished” button for rocks and props, and it exports with the prefab.</li>
+      </ul>
+
+      <h3>Saving your paint</h3>
+      <div class="cheat">
+        <dl>
+          <dt><span class="ui ui--main">Save material + textures…</span></dt><dd>In the footer. Writes the material and maps to your project as <code>.mat</code> and <code>.png</code>, puts them on the object and ends the session.</dd>
+          <dt><span class="ui">Session file</span> → <span class="ui">Save</span></dt><dd>Keeps the layer stack editable: every layer, the Height source, masks and settings, in a <code>KelpoPaintSession</code> asset. Drop it into <span class="ui">Session file</span> on the start screen to carry on.</dd>
+          <dt>Recovery checkpoints</dt><dd>On by default: every 25 strokes and before script reloads. After a crash the start screen offers <span class="ui">Resume from checkpoint</span>.</dd>
+          <dt><span class="ui">End session</span></dt><dd>Keeps the look in the scene only. No files.</dd>
+        </dl>
+      </div>
+      <p>Until you save, the working maps live inside the scene: about 43 MB of raw data at 2048, and roughly twice that in a text scene file. Save material + textures (or Export) swaps that for compact project assets. Without a session file, <span class="ui">Continue painting</span> resumes from the material's maps with the layers flattened.</p>
+
+      <details class="more">
+        <summary>more detail: characters, multiple materials, seams and speed</summary>
+        <p><b>Skinned meshes</b> are painted in their current pose. Bones, weights and blendshapes are never changed. Modeling, sculpting and retopo on a rig are switched off on purpose.</p>
+        <p><b>Multiple materials:</b> a session paints one material slot, chosen on the start screen. Only its triangles take strokes. Paint another slot by saving or ending the session and starting a new one.</p>
+        <p><b>Seams:</b> the brush paints the surface in 3D, so strokes cross UV seams and islands. Edge colors are padded into the empty texture space to hide filtering seams. Overlapping UVs share pixels and can't hold separate paint.</p>
+        <p><b>Speed:</b> only the touched 128-pixel tiles are uploaded to the GPU, and brush work runs on worker threads (<span class="ui">Multithreaded brush</span> in the <span class="ui">…</span> menu). Undo keeps the last 10 texture-changing steps.</p>
+        <p><b>Transform handle:</b> Unity's object gizmo is hidden while painting. Turn off <span class="ui">Hide Unity transform gizmo</span> in the object card's <span class="ui">⋯</span> menu to move the object.</p>
+      </details>
+    </section>
+
+    <section class="step" id="colliders">
+      <div class="step-head"><span class="step-no">10</span><h2>Colliders</h2></div>
+      <p class="why">Physics rarely needs every triangle. Generate a simplified collider, or draw one around exactly what matters.</p>
+      <h3>Generate</h3>
+      <p><span class="ui">Simplify the mesh</span> → set <span class="ui">Keep %</span> → <span class="ui">Generate collider</span>. Works on any selected mesh, imported ones included, and respects the Retopo protect mask. Tick <span class="ui">Convex</span> if the object has a moving Rigidbody: Unity needs convex colliders on those.</p>
+      <figure class="shot">
+        <a href="media/collider-card.jpg"><img src="media/collider-card.jpg" width="440" height="170" loading="lazy" alt="The Simplify the mesh card: Keep percent, Convex and Generate collider."></a>
+      </figure>
+      <h3>Draw</h3>
+      <figure class="shot">
+        <a href="media/collider-draw.jpg"><img src="media/collider-draw.jpg" width="440" height="560" loading="lazy" alt="The Draw a collider card: Shape Area or Wall, 11 points editing, Height, Uniform height, Convex, Allow points off the surface, Build collider, Clear and Done, with a key list below."></a>
+        <figcaption>The card lists the keys while you draw.</figcaption>
+      </figure>
+      <div class="cheat">
+        <dl>
+          <dt><span class="ui">Area</span></dt><dd>Click points around the shape. The outline becomes one clean mesh collider. Concave outlines work with <span class="ui">Convex</span> off.</dd>
+          <dt><span class="ui">Wall</span></dt><dd>An open line of points becomes a double-sided wall that follows the ground. Fast invisible walls along cliffs and level edges. Two points minimum.</dd>
+          <dt>click · <kbd>Backspace</kbd> · <kbd>Esc</kbd></dt><dd>Add a point, remove the last one, stop adding (press <kbd>Esc</kbd> again to end). Drag a point's base or top to move it or set its height.</dd>
+          <dt><span class="ui">Build collider</span> · <span class="ui">Rebuild</span></dt><dd>Your points stay after building. Adjust them or <span class="ui">Height</span> and rebuild the same collider. <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span> removes the collider but keeps the lines.</dd>
+          <dt><span class="ui">Clear</span> · <span class="ui">Done</span></dt><dd>Start over, or finish.</dd>
+        </dl>
+      </div>
+      <p>Points land on the selected mesh only, so a miss can't jump to the scenery behind it. Tick <span class="ui">Allow points off the surface</span> for a flat construction plane. Crossing edges, doubled points and zero-area spikes turn <b>red</b> and Build waits until they're fixed. The last good collider stays in the meantime.</p>
+      <p>While the tab is open, the collider shows as a green wireframe. The <span class="ui">On this object</span> card shows its triangle count and a <span class="ui">Remove</span> button.</p>
+    </section>
+
+    <section class="step" id="export">
+      <div class="step-head"><span class="step-no">11</span><h2>Export</h2></div>
+      <p class="why">One click turns the working object into plain Unity assets that don't need Kelpo.</p>
+      <figure class="shot">
+        <a href="media/export-card.jpg"><img src="media/export-card.jpg" width="440" height="590" loading="lazy" alt="The Export card: mesh, materials and colliders counts, a note about transient paint maps, Transform, Materials and Include colliders options, and Export as prefab."></a>
+      </figure>
+      <ol class="do">
+        <li>Select the finished object and give it a <span class="ui">Name</span>. It follows the selection until you type your own.</li>
+        <li>Pick the options below, then <span class="ui ui--main">Export as prefab…</span> and a folder inside Assets.</li>
+        <li>Kelpo checks the saved prefab, then asks whether to keep the editable scene object or delete it (undoable).</li>
+      </ol>
+      <figure class="shot">
+        <a href="media/export-done.jpg"><img src="media/export-done.jpg" width="440" height="290" loading="lazy" alt="The Export Complete dialog with Keep Working Object and Delete Working Object (Undoable)."></a>
+      </figure>
+      <p>With the default <span class="ui">Write material and texture copies</span> you get:</p>
+      <figure class="shot">
+        <a href="media/files.jpg"><img src="media/files.jpg" width="500" height="150" loading="lazy" alt="The exported files: the prefab plus Albedo, ColliderMesh, Mat, Mesh, MetallicSmoothness and Normal."></a>
+        <figcaption>Mesh, PNG maps with the right import settings, a material using them, the collider mesh, and the prefab that ties it together. An Occlusion map is added when you baked AO.</figcaption>
+      </figure>
+      <div class="cheat">
+        <dl>
+          <dt><span class="ui">Materials</span></dt><dd><span class="ui">Write material and texture copies</span> (independent files), or <span class="ui">Reuse assigned material assets</span> to point at saved materials the object already uses. Reuse writes only the mesh, prefab and colliders, and needs the paint saved and the session ended first.</dd>
+          <dt><span class="ui">Transform</span></dt><dd><span class="ui">Keep scale on the root</span> (default) copies the object's scale to the prefab root. <span class="ui">Bake scale into the mesh</span> writes it into the vertices. <span class="ui">Ignore the transform</span> exports the mesh as is. Rotation is never copied.</dd>
+          <dt><span class="ui">Include colliders</span></dt><dd>Child colliders keep their hierarchy, or get baked flat under the root.</dd>
+        </dl>
+      </div>
+      <p><b>Nothing half-done:</b> files are backed up before anything is written. If a write, an import or the final check fails, the folder goes back to how it was. Existing files are only overwritten after you confirm. <span class="ui">Save material + textures…</span> has the same protection.</p>
+      <p>For a <b>skinned mesh</b>, Export only saves and rebinds the materials and maps. The rig, mesh and animations stay untouched.</p>
+      <details class="more">
+        <summary>more detail: a chest with an opening lid (one shared material)</summary>
+        <ol class="do">
+          <li>Build the base and lid as loose parts of one Kelpo object, same material slot. Finish the shape, then unwrap and paint them together.</li>
+          <li>In Paint, <span class="ui">Save material + textures…</span>. That's the shared chest material.</li>
+          <li>In Model Face mode, select the lid with <span class="ui">Linked</span> and <span class="ui">Detach</span> it, before colliders and export.</li>
+          <li>Export the base and the lid separately, with names like <code>Chest_Base</code> and <code>Chest_Lid</code>, both with <span class="ui">Reuse assigned material assets</span>. Both prefabs use the same material, no copies.</li>
+          <li>Put them under one parent and set up the hinge pivot before animating the lid.</li>
+        </ol>
+        <p>Exported the whole chest before detaching? Export the base again afterwards: the old prefab still has the lid in it. Don't give both parts the same name in the same folder. Sharing a material doesn't merge the objects or promise a single draw call.</p>
+      </details>
+    </section>
+
+    <p class="part-head"><b>reference</b></p>
+
+    <section class="step" id="shortcuts">
+      <div class="step-head"><span class="step-no">12</span><h2>Keyboard shortcuts</h2></div>
+      <p>Where it says Ctrl/Cmd, use <kbd>Cmd</kbd> on a Mac.</p>
+      <table class="ref">
+        <caption>anywhere</caption>
+        <tr><th><span class="combo"><kbd>Ctrl/Cmd</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>K</kbd></span></th><td>Open the Kelpo 3D Multitool window</td></tr>
+        <tr><th><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span> / <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Y</kbd></span></th><td>Undo / redo. Meshes and colliders rebuild correctly.</td></tr>
+      </table>
+      <table class="ref">
+        <caption>model</caption>
+        <tr><th><kbd>1</kbd> / <kbd>2</kbd> / <kbd>3</kbd></th><td>Vertex / Edge / Face mode (mouse over the Scene view)</td></tr>
+        <tr><th><span class="combo"><kbd>Ctrl/Cmd</kbd><span class="plus">+</span><kbd>A</kbd></span></th><td>Select everything in the current mode</td></tr>
+        <tr><th><span class="combo"><kbd>Shift</kbd><span class="plus">+</span>click</span> / <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>click</span></th><td>Add to / remove from the selection</td></tr>
+        <tr><th>drag on empty space</th><td>Box select (anything the box crosses counts)</td></tr>
+        <tr><th><span class="combo"><kbd>Ctrl/Cmd</kbd><span class="plus">+</span>click</span> a mode</th><td>Convert the selection to that mode</td></tr>
+        <tr><th><kbd>L</kbd> / <span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>L</kbd></span></th><td>Select edge loop / ring</td></tr>
+        <tr><th><kbd>C</kbd> / <span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>R</kbd></span></th><td>Connect / loop cut</td></tr>
+        <tr><th><kbd>Delete</kbd> / <kbd>Backspace</kbd></th><td>Delete / dissolve (keeps the surface)</td></tr>
+        <tr><th><kbd>W</kbd> / <kbd>E</kbd> / <kbd>R</kbd></th><td>Move / rotate / scale the selection (Unity's tools)</td></tr>
+        <tr><th><span class="combo"><kbd>Shift</kbd><span class="plus">+</span>drag</span> the gizmo</th><td>Extrude faces, or grow open border edges, in that motion</td></tr>
+      </table>
+      <p style="font-size:0.9rem; margin-top:6px">L, Shift+L, C, Ctrl+R, Delete and Backspace are defaults. Change them under <span class="ui">Shortcuts</span> → <span class="ui">Customize keys</span> in the Model tab.</p>
+      <table class="ref">
+        <caption>sculpt, retopo and paint</caption>
+        <tr><th><kbd>[</kbd> / <kbd>]</kbd></th><td>Brush smaller / bigger</td></tr>
+        <tr><th><span class="combo"><kbd>Shift</kbd><span class="plus">+</span>scroll</span></th><td>Brush size</td></tr>
+        <tr><th><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>scroll</span></th><td>Brush strength (Sculpt) or flow (Paint)</td></tr>
+        <tr><th>hold <kbd>Shift</kbd></th><td>Sculpt: smooth with any brush</td></tr>
+        <tr><th>hold <kbd>Ctrl</kbd></th><td>Sculpt: invert (Draw carves, Clay scrapes, Crease raises, Inflate deflates, Pinch spreads)</td></tr>
+        <tr><th><span class="combo"><kbd>Shift</kbd><span class="plus">+</span>drag</span></th><td>Retopo: erase the protect mask. Paint: erase on an upper layer</td></tr>
+        <tr><th><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span>click</span></th><td>Paint: eyedropper</td></tr>
+        <tr><th><kbd>Esc</kbd> or right-click</th><td>Paint: cancel a Line stroke</td></tr>
+      </table>
+      <table class="ref">
+        <caption>colliders (while drawing)</caption>
+        <tr><th><kbd>Backspace</kbd></th><td>Remove the last point</td></tr>
+        <tr><th><kbd>Esc</kbd></th><td>Stop adding points (press again to end)</td></tr>
+      </table>
+    </section>
+
+    <section class="step" id="pipelines">
+      <div class="step-head"><span class="step-no">13</span><h2>Render pipelines</h2></div>
+      <table class="ref ref--grid">
+        <tr><th></th><th>URP</th><th>Built-in</th><th>HDRP</th></tr>
+        <tr><td>All the tools</td><td>✔ main</td><td>✔</td><td>✔</td></tr>
+        <tr><td>Materials Kelpo creates</td><td>URP Lit</td><td>Standard</td><td>HDRP/Lit</td></tr>
+        <tr><td>Demo scene and samples</td><td>✔ made for URP</td><td>one-click adapter</td><td>one-click adapter</td></tr>
+      </table>
+      <p>Kelpo picks the right lit shader for the active pipeline on its own. To switch the bundled demo and sample materials, run <span class="path">Tools<i>›</i>Kelpo<i>›</i>3D Multitool<i>›</i>Adapt Demo Materials to Active Pipeline</span>. It only touches the demo materials, and it's safe to run again after switching pipelines.</p>
+      <details class="more">
+        <summary>more detail</summary>
+        <p><b>Built-in:</b> besides the adapter, <code>Kelpo3DMultitool_BuiltinRP_Materials.unitypackage</code> has ready-made Standard versions of every demo material. Importing it doesn't reassign the demo scene.</p>
+        <p><b>HDRP:</b> modeling, UVs, colliders and export don't care about the pipeline. Painting understands HDRP's mask map and keeps its AO and detail channels while you paint metallic and smoothness. Check custom HDRP shaders that don't use HDRP/Lit property names.</p>
+        <p>Properties written: URP/Built-in <code>_BaseMap</code>/<code>_MainTex</code>, <code>_MetallicGlossMap</code>, <code>_BumpMap</code>, <code>_OcclusionMap</code>. HDRP <code>_BaseColorMap</code>, <code>_MaskMap</code>, <code>_NormalMap</code>.</p>
+      </details>
+    </section>
+
+    <section class="step" id="samples">
+      <div class="step-head"><span class="step-no">14</span><h2>Demo scene and samples</h2></div>
+      <ul class="plain">
+        <li><code>Demo/Kelpo3DMultitoolDemo.unity</code>: sample props and an instruction panel, made for URP.</li>
+        <li><code>Samples/</code>: props made with the tool. Each folder holds the prefab and what Export wrote for it (mesh, material, maps, collider where used), so they double as examples of export output.</li>
+      </ul>
+    </section>
+
+    <section class="step" id="faq">
+      <div class="step-head"><span class="step-no">15</span><h2>FAQ and troubleshooting</h2></div>
+      <div class="faq">
+        <details>
+          <summary>The window is open but clicking in the Scene view does nothing.</summary>
+          <p>Select a Kelpo Object first. The Model tab can create one or convert your selection. Brushes only work on the selected object.</p>
+        </details>
+        <details>
+          <summary>Paint says “This mesh has no UVs”.</summary>
+          <p>Run <span class="ui">Unique unwrap</span> in the UVs tab (Paint has an <span class="ui">Open UVs</span> button). Box projection also paints, but its islands overlap.</p>
+        </details>
+        <details>
+          <summary>I painted, then edited the shape, and the texture looks scrambled.</summary>
+          <p>Moving and sculpting keep the UVs. Adding, deleting, splitting, welding or reordering faces makes new corners the old texture never covered, so Kelpo clears that unwrap on purpose. Your texture files are fine. Finish the shape, unwrap again, repaint the changed parts.</p>
+        </details>
+        <details>
+          <summary>My painted object went grey after restarting Unity.</summary>
+          <p>Select it and open Paint. <span class="ui">Resume from checkpoint</span> or the <span class="ui">Session file</span> field bring every layer back. Otherwise <span class="ui">Continue painting</span> resumes from the material's maps, flattened. To make paint permanent, use <span class="ui">Save material + textures…</span> or Export.</p>
+        </details>
+        <details>
+          <summary>Export said it failed. What state is my folder in?</summary>
+          <p>The state it was in before. Every export backs files up first and restores them on any failure. Fix the reported cause (a locked file, a failed import, a full disk) and export again.</p>
+        </details>
+        <details>
+          <summary>Strokes lag at 2048.</summary>
+          <p>Brush work grows with the area covered and the mesh density. Use a smaller brush, start the session at 1024, or simplify dense geometry before unwrapping. A “Fast tiled paint upload” warning in the Console means your graphics backend fell back to slower full uploads.</p>
+        </details>
+        <details>
+          <summary>The mirrored half isn't clickable.</summary>
+          <p>By design. It's display only. Edit the real half, then <span class="ui">Apply mirror</span> when you're done.</p>
+        </details>
+        <details>
+          <summary>The brush lands next to the cursor on a scaled object.</summary>
+          <p>Brushes handle non-uniform scale. If an imported object still misbehaves, look for negative scale values and flip or apply them before editing.</p>
+        </details>
+        <details>
+          <summary>My generated collider disappeared.</summary>
+          <p>Colliders don't render anything. The green wireframe only shows while the Colliders tab is open. Check the Inspector for the MeshCollider.</p>
+        </details>
+        <details>
+          <summary>Undo after a sculpt stroke looks one step behind.</summary>
+          <p>Each stroke is one undo step and the collider updates with it. If the view looks stale, click once in the Scene view.</p>
+        </details>
+        <details>
+          <summary>Does it work with Domain Reload turned off?</summary>
+          <p>Yes. Kelpo pauses while Play Mode is on and picks up again after. Paint sessions and unfinished collider drawings survive. Leave Play Mode before modeling, painting or exporting.</p>
+        </details>
+        <details>
+          <summary>Can I use the exported assets in a project without the tool?</summary>
+          <p>Yes. They're plain meshes, PNGs, materials and prefabs with no link to the package.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="step" id="limits">
+      <div class="step-head"><span class="step-no">16</span><h2>Known limitations</h2></div>
+      <ul class="plain">
+        <li>No bevel or edge slide yet. Loop cuts land at edge midpoints, then slide them with <kbd>W</kbd>.</li>
+        <li>The simplifier is a weighted edge collapse, not full QEM. Very low percentages (under 5%) can get lumpy, and UVs don't survive reduction.</li>
+        <li>Topology changes can clear UVs even when the vertex count stays the same. Finish the shape before the final unwrap.</li>
+        <li>Paint undo keeps the last 10 texture-changing steps. A Fill at 2048 records the whole channel, so it's much heavier than a stroke.</li>
+        <li>A paint session edits one material slot at a time.</li>
+        <li>Session files belong to one object. They don't carry over to a mesh with a different unwrap (Kelpo warns you).</li>
+        <li>Paint sessions don't persist inside Prefab Mode. Save material + textures before closing the stage, or paint on a scene instance.</li>
+        <li>Ambient occlusion is baked on the CPU, so 1024 and up takes a while (you can cancel). It's self-occlusion only.</li>
+        <li>Drawn collider outlines must be simple shapes. Crossing or duplicate points are refused, not guessed.</li>
+        <li>Separately exported parts get their own material copies unless you choose <span class="ui">Reuse assigned material assets</span> (see the chest recipe under Export).</li>
+        <li>Graphics backends without region texture copies use slower full uploads while painting.</li>
+      </ul>
+    </section>
+
+    <section class="step" id="developers">
+      <div class="step-head"><span class="step-no">17</span><h2>For developers</h2></div>
+      <p class="why">The code ships readable and un-obfuscated. It's meant to be read and extended.</p>
+      <div class="cheat">
+        <dl>
+          <dt><code>Runtime/</code></dt><dd>Assembly and namespace <code>Kelpo.Multitool</code>. Mesh data and algorithms, no editor code.</dd>
+          <dt><code>Editor/</code></dt><dd><code>Kelpo.Multitool.Editor</code>. The window and every tab, editor only.</dd>
+        </dl>
+      </div>
+      <table class="ref">
+        <caption>map of the code</caption>
+        <tr><th><code>Runtime/PolyMeshData.cs</code></th><td>The editable n-gon mesh, edit operations and primitives</td></tr>
+        <tr><th><code>Runtime/KelpoObject.cs</code></th><td>Scene component: syncs the MeshFilter, stores the protect mask and live mirror</td></tr>
+        <tr><th><code>Runtime/Triangulator.cs</code></th><td>Concave-safe ear-clipping triangulation</td></tr>
+        <tr><th><code>Runtime/Decimator.cs</code></th><td>Weighted edge-collapse simplifier (Retopo and Colliders)</td></tr>
+        <tr><th><code>Runtime/Remesher.cs</code></th><td>Adaptive remesh</td></tr>
+        <tr><th><code>Editor/KelpoWindow.cs</code></th><td>Tab routing, shared helpers, default material</td></tr>
+        <tr><th><code>Editor/KelpoUI*.cs</code>, <code>KelpoIcons.cs</code></th><td>The interface kit and code-drawn icons. Native IMGUI, no images</td></tr>
+        <tr><th><code>Editor/*Tool.cs</code></th><td>Each tab's logic and layout</td></tr>
+      </table>
+      <p style="margin-top:14px"><b>Adding a tab:</b> make a class with <code>OnGUI()</code> (and optionally <code>OnSceneGUI(SceneView)</code>), add it to <code>KelpoWindow.Tab</code>, both switch statements and the title, subtitle and icon arrays. Build the layout from <code>KelpoUI</code> cards so spacing and both editor themes stay consistent.</p>
+      <details class="more">
+        <summary>more detail: conventions and things not to break</summary>
+        <p>Classes and methods <code>PascalCase</code>, fields <code>camelCase</code> (private <code>_camelCase</code>), constants <code>CONSTANT_CASE</code>. Tool-owned meshes and materials use <code>HideAndDontSave</code> and are released with the tool. Never adopt or destroy a collider the user made.</p>
+        <ul class="plain">
+          <li>Face winding: <code>Vector3.Cross(b−a, c−a)</code> points outward (Unity clockwise-front).</li>
+          <li>UVs are stored per face corner. Position and sculpt edits keep them, topology operations must invalidate them.</li>
+          <li>Geometry undo rebuilds the affected meshes and re-cooks their colliders. Paint-only and selection-only undo must not trigger unrelated rebuilds.</li>
+          <li>The decimator welds duplicate positions first, checks the link condition and isolates one-ring neighborhoods per pass. Keep those guards.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="more">
+      <h2>
+        <svg width="30" height="24" viewBox="0 0 30 24" fill="none" aria-hidden="true">
+          <path d="M3 5 h24 v15 H3 Z M3 6 l12 9 12-9" stroke="#5e7d63" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        still stuck?
+      </h2>
+      <p class="lead">Write to <a href="mailto:kelpo.works@gmail.com">kelpo.works@gmail.com</a>. Bug reports help most with your Unity version and render pipeline in them. Want to see it all in action? The <a href="../getting-started/">Getting started</a> tutorial builds a barrel from scratch, with a short clip for every step.</p>
+    </section>
+
+  </main>
+</div>
+
+<footer class="wrap">
+  <nav aria-label="Elsewhere">
+    <a href="../../">All tools</a>
+    <a href="../">3D Multitool</a>
+    <a href="../getting-started/">Tutorial</a>
+    <a href="https://www.youtube.com/@KelpoTools">YouTube</a>
+    <a href="https://assetstore.unity.com/publishers/153966">Asset Store</a>
+  </nav>
+  <p>© 2026 Kelpo · made in Finland</p>
+  <p class="mini">good enough to ship</p>
+</footer>
+
+</body>
+</html>
